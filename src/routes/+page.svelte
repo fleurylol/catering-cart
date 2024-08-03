@@ -146,6 +146,13 @@
 				<button class="size rounded-md" onclick={() => setSize('L')}>L</button>
 			</div>
 		{/if}
+		<div class="mt-2 text-xl">{tray} {size}</div>
+		{#if size}
+			<button
+				class="rounded-lg bg-black p-2 text-white"
+				onclick={() => addTrayToCart({ tray, size })}>Add to Cart</button
+			>
+		{/if}
 	{/if}
 	{#if boxTab}
 		<div>box area</div>
