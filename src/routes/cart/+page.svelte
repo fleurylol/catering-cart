@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { trays } from '$lib/trayList';
+	import { allTrays } from '$lib/traySearch';
 	import type { TrayType } from '$lib/types';
 	import classnames from 'classnames';
 	let trayFilter = $state(trays.filter((tray) => tray.type === ''));
 	let selectedTray = $state('');
 	let selectedSize = $state('');
 	let trayCart = $state<TrayType>([]);
+	let order = $state([]);
 	function setActiveTab(tab: string) {
 		selectedSize = '';
 		selectedTray = '';
@@ -43,7 +45,21 @@
 	}
 
 	function submitCart() {
-		console.log(trayCart);
+		trayCart.forEach((tray) => {
+			const trayIndex = allTrays.findIndex((t) => t.name === tray.tray);
+			if (trayIndex !== -1) {
+				const sizes = allTrays[trayIndex].sizes;
+				const sizeArray = Object.entries(sizes).map(([key, value]) => ({ name: key, ...value }));
+				const traySize = sizeArray.find((size) => size.name === tray.size);
+				if (traySize) {
+					console.log(tray.trayQty, tray.tray, tray.size, traySize);
+				} else {
+					console.error(`Size ${tray.size} not found for tray ${tray.tray}`);
+				}
+			} else {
+				console.error(`Tray with name ${tray.tray} not found`);
+			}
+		});
 	}
 </script>
 
@@ -117,7 +133,7 @@
 	.size {
 		flex: 1;
 		font-size: large;
-		padding: 1rem;
+		padding: 0.5rem;
 		text-align: center;
 		border: black 1px solid;
 	}
@@ -136,5 +152,3 @@
 		padding: 0.5rem;
 	}
 </style>
-
-
