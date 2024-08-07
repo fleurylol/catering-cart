@@ -1,9 +1,20 @@
 export type TrayType = {
 	id: `${string}-${string}-${string}-${string}-${string}`;
+	utensil: string;
 	trayQty: number;
 	tray: string;
 	size: string;
 }[];
+
+export type OrderType = {
+	tongCount: number;
+	SpoonCount: number;
+	serving_size: number;
+	honey: number;
+	free8oz: number;
+	roasted_almonds: number;
+	dressings: string[] | null;
+};
 
 export type Tray = Array<{
 	type: string;
@@ -13,7 +24,7 @@ export type Tray = Array<{
 	utensil: string;
 	notes: string | null;
 	sizes: {
-		small: {
+		S: {
 			serving_size: number;
 			quantity: number | null;
 			honey: number | null;
@@ -21,7 +32,7 @@ export type Tray = Array<{
 			roasted_almonds: number | null;
 			dressings: string[] | null;
 		} | null;
-		medium: {
+		M: {
 			serving_size: number;
 			quantity: number | null;
 			honey: number | null;
@@ -29,7 +40,7 @@ export type Tray = Array<{
 			roasted_almonds: number | null;
 			dressings: string[] | null;
 		} | null;
-		large: {
+		L: {
 			serving_size: number;
 			quantity: number | null;
 			honey: number | null;
@@ -49,7 +60,7 @@ export interface TrayInfoProps {
 		utensil: string;
 		notes: string | null;
 		sizes: {
-			small: {
+			S: {
 				serving_size: number;
 				quantity: number | null;
 				honey: number | null;
@@ -57,7 +68,7 @@ export interface TrayInfoProps {
 				roasted_almonds: number | null;
 				dressings: string[] | null;
 			} | null;
-			medium: {
+			M: {
 				serving_size: number;
 				quantity: number | null;
 				honey: number | null;
@@ -65,7 +76,7 @@ export interface TrayInfoProps {
 				roasted_almonds: number | null;
 				dressings: string[] | null;
 			} | null;
-			large: {
+			L: {
 				serving_size: number;
 				quantity: number | null;
 				honey: number | null;

@@ -8,7 +8,7 @@ export const allTrays: Tray = [
 		utensil: 'Tong',
 		notes: null,
 		sizes: {
-			small: {
+			S: {
 				serving_size: 8,
 				quantity: 64,
 				honey: null,
@@ -16,7 +16,7 @@ export const allTrays: Tray = [
 				roasted_almonds: null,
 				dressings: null
 			},
-			medium: {
+			M: {
 				serving_size: 15,
 				quantity: 120,
 				honey: null,
@@ -24,7 +24,7 @@ export const allTrays: Tray = [
 				roasted_almonds: null,
 				dressings: null
 			},
-			large: {
+			L: {
 				serving_size: 25,
 				quantity: 200,
 				honey: null,
@@ -36,13 +36,13 @@ export const allTrays: Tray = [
 	},
 	{
 		type: 'Hot',
-		img: 'https://www.cfacdn.com/img/order/menu/Online/Trays/StripsTray_Small_CFASauce_BBQSauce_PDP.png',
+		img: 'https://www.cfacdn.com/img/order/menu/Online/Trays/StripsTray_S_CFASauce_BBQSauce_PDP.png',
 		name: 'Strip Tray',
 		variants: [],
 		utensil: 'Tong',
 		notes: null,
 		sizes: {
-			small: {
+			S: {
 				serving_size: 8,
 				quantity: 24,
 				honey: null,
@@ -50,7 +50,7 @@ export const allTrays: Tray = [
 				roasted_almonds: null,
 				dressings: null
 			},
-			medium: {
+			M: {
 				serving_size: 15,
 				quantity: 45,
 				honey: null,
@@ -58,7 +58,7 @@ export const allTrays: Tray = [
 				roasted_almonds: null,
 				dressings: null
 			},
-			large: {
+			L: {
 				serving_size: 25,
 				quantity: 75,
 				honey: null,
@@ -71,13 +71,12 @@ export const allTrays: Tray = [
 	{
 		type: 'Hot',
 		img: 'https://www.cfacdn.com/img/order/COM/Menu_Refresh/Catering/Catering%20PDP/031417_MacnCheese_SmTray_CateringSize_Prod_CMYK_0038-V4_2880px.png',
-		name: 'Mac N Cheese Tray',
+		name: 'Mac Tray',
 		variants: null,
 		utensil: 'Spoon',
 		notes: null,
 		sizes: {
-			small: null,
-			medium: {
+			S: {
 				serving_size: 10,
 				quantity: null,
 				honey: null,
@@ -85,7 +84,8 @@ export const allTrays: Tray = [
 				roasted_almonds: null,
 				dressings: null
 			},
-			large: {
+			M: null,
+			L: {
 				serving_size: 20,
 				quantity: null,
 				honey: null,
@@ -103,19 +103,19 @@ export const allTrays: Tray = [
 		utensil: 'Tong',
 		notes: null,
 		sizes: {
-			small: {
+			S: {
 				serving_size: 5,
 				quantity: 20,
-				honey: null,
+				honey: 10,
 				free8oz: null,
 				roasted_almonds: null,
 				dressings: null
 			},
-			medium: null,
-			large: {
+			M: null,
+			L: {
 				serving_size: 10,
 				quantity: 40,
-				honey: null,
+				honey: 20,
 				free8oz: null,
 				roasted_almonds: null,
 				dressings: null
@@ -125,14 +125,14 @@ export const allTrays: Tray = [
 	{
 		type: 'Hot',
 		img: 'https://www.cfacdn.com/img/order/COM/Menu_Refresh/Catering/Catering%20Desktop/GrilledFiletChick_Bundle_Desk.png',
-		name: 'Grilled Fillet Bundle',
+		name: 'Grilled Bundle',
 		variants: null,
 		utensil: 'Tong 3x',
 		notes:
 			'Includes 10 multigrain buns (repacked in ice bag), 30 half strips of bacon (packed day of), and 10 Honey Roasted BBQ Sauce',
 		sizes: {
-			small: null,
-			medium: {
+			S: null,
+			M: {
 				serving_size: 10,
 				quantity: 10,
 				honey: null,
@@ -140,18 +140,18 @@ export const allTrays: Tray = [
 				roasted_almonds: null,
 				dressings: null
 			},
-			large: null
+			L: null
 		}
 	},
 	{
 		type: 'Cold',
-		img: 'https://www.cfacdn.com/img/order/menu/Online/Trays/saladTraySmall_PDP.png',
+		img: 'https://www.cfacdn.com/img/order/menu/Online/Trays/saladTrayS_PDP.png',
 		name: 'Salad Tray',
 		variants: null,
 		utensil: 'Tong',
 		notes: 'If guest does no specify dressing, we will provide Avocado Lime Ranch',
 		sizes: {
-			small: {
+			S: {
 				serving_size: 5,
 				quantity: null,
 				honey: null,
@@ -167,8 +167,8 @@ export const allTrays: Tray = [
 					'Creamy Salsa - 1'
 				]
 			},
-			medium: null,
-			large: {
+			M: null,
+			L: {
 				serving_size: 10,
 				quantity: null,
 				honey: null,
@@ -189,13 +189,13 @@ export const allTrays: Tray = [
 	/// spacing
 	{
 		type: 'Cold',
-		img: 'https://www.cfacdn.com/img/order/menu/Mobile/Trays/030719_FruitTray_Large_Product_LowAngle_0960_1200x1200.png',
+		img: 'https://www.cfacdn.com/img/order/menu/Mobile/Trays/030719_FruitTray_L_Product_LowAngle_0960_1200x1200.png',
 		name: 'Fruit Tray',
 		variants: null,
 		utensil: 'Spoon',
 		notes: null,
 		sizes: {
-			small: {
+			S: {
 				serving_size: 12,
 				quantity: null,
 				honey: null,
@@ -203,8 +203,8 @@ export const allTrays: Tray = [
 				roasted_almonds: null,
 				dressings: null
 			},
-			medium: null,
-			large: {
+			M: null,
+			L: {
 				serving_size: 26,
 				quantity: null,
 				honey: null,
@@ -223,21 +223,21 @@ export const allTrays: Tray = [
 		utensil: 'Tong',
 		notes: null,
 		sizes: {
-			small: {
+			S: {
 				serving_size: 10,
 				quantity: null,
 				honey: null,
 				free8oz: null,
-				roasted_almonds: null,
+				roasted_almonds: 10,
 				dressings: null
 			},
-			medium: null,
-			large: {
+			M: null,
+			L: {
 				serving_size: 20,
 				quantity: null,
 				honey: null,
 				free8oz: null,
-				roasted_almonds: null,
+				roasted_almonds: 20,
 				dressings: null
 			}
 		}
@@ -245,29 +245,21 @@ export const allTrays: Tray = [
 	/// spacing
 	{
 		type: 'Cold',
-		img: 'https://www.cfacdn.com/img/order/menu/Online/Trays/wrapTraySmall_PDP.png',
+		img: 'https://www.cfacdn.com/img/order/menu/Online/Trays/wrapTrayS_PDP.png',
 		name: 'Grilled Wrap Tray',
 		variants: ['Spicy Grilled Wrap Tray', 'Veggie Wrap Tray'],
 		utensil: 'Tong',
 		notes: 'If guest does no specify dressing, we will provide Avocado Lime Ranch',
 		sizes: {
-			small: {
+			S: {
 				serving_size: 6,
 				quantity: 6,
 				honey: null,
 				free8oz: null,
 				roasted_almonds: null,
-				dressings: [
-					'Avocado Lime Ranch - 1',
-					'Garden Herb Ranch - 1',
-					'Zesty Apple Cider Vinaigrette - 1',
-					'Fat-Free Honey Mustard - 1',
-					'Light Italian - 1',
-					'Light Balsamic Vinaigrette - 1',
-					'Creamy Salsa - 1'
-				]
+				dressings: ['Avocado Lime Ranch - 6']
 			},
-			medium: {
+			M: {
 				serving_size: 10,
 				quantity: 10,
 				honey: null,
@@ -283,7 +275,7 @@ export const allTrays: Tray = [
 					'Creamy Salsa - 1'
 				]
 			},
-			large: {
+			L: {
 				serving_size: 14,
 				quantity: 14,
 				honey: null,
@@ -309,7 +301,7 @@ export const allTrays: Tray = [
 		utensil: 'Tong',
 		notes: 'If guest does no specify dressing, we will provide Avocado Lime Ranch',
 		sizes: {
-			small: {
+			S: {
 				serving_size: 6,
 				quantity: 6,
 				honey: null,
@@ -325,7 +317,7 @@ export const allTrays: Tray = [
 					'Creamy Salsa - 1'
 				]
 			},
-			medium: {
+			M: {
 				serving_size: 10,
 				quantity: 10,
 				honey: null,
@@ -341,7 +333,7 @@ export const allTrays: Tray = [
 					'Creamy Salsa - 1'
 				]
 			},
-			large: {
+			L: {
 				serving_size: 14,
 				quantity: 14,
 				honey: null,
@@ -361,13 +353,13 @@ export const allTrays: Tray = [
 	},
 	{
 		type: 'Dry',
-		img: 'https://www.cfacdn.com/img/order/menu/Online/Trays/cookieTrayLarge_Desk.png',
+		img: 'https://www.cfacdn.com/img/order/menu/Online/Trays/cookieTrayL_Desk.png',
 		name: 'Cookie Tray',
 		variants: null,
 		utensil: 'Tong',
 		notes: null,
 		sizes: {
-			small: {
+			S: {
 				serving_size: 12,
 				quantity: 12,
 				honey: null,
@@ -375,8 +367,8 @@ export const allTrays: Tray = [
 				roasted_almonds: null,
 				dressings: null
 			},
-			medium: null,
-			large: {
+			M: null,
+			L: {
 				serving_size: 24,
 				quantity: 24,
 				honey: null,
@@ -395,7 +387,7 @@ export const allTrays: Tray = [
 		utensil: 'Tong',
 		notes: null,
 		sizes: {
-			small: {
+			S: {
 				serving_size: 12,
 				quantity: 12,
 				honey: null,
@@ -403,8 +395,8 @@ export const allTrays: Tray = [
 				roasted_almonds: null,
 				dressings: null
 			},
-			medium: null,
-			large: {
+			M: null,
+			L: {
 				serving_size: 24,
 				quantity: 24,
 				honey: null,
@@ -422,7 +414,7 @@ export const allTrays: Tray = [
 		utensil: 'Tong',
 		notes: null,
 		sizes: {
-			small: {
+			S: {
 				serving_size: 12,
 				quantity: 6,
 				honey: null,
@@ -430,8 +422,8 @@ export const allTrays: Tray = [
 				roasted_almonds: null,
 				dressings: null
 			},
-			medium: null,
-			large: {
+			M: null,
+			L: {
 				serving_size: 24,
 				quantity: 12,
 				honey: null,

@@ -2,24 +2,28 @@ export const trays = [
 	{
 		type: 'hot',
 		trayQty: 0,
+		utensil: 'Tong',
 		name: 'Nugget Tray',
 		sizes: ['S', 'M', 'L']
 	},
 	{
 		type: 'hot',
 		trayQty: 0,
+		utensil: 'Tong',
 		name: 'Strip Tray',
 		sizes: ['S', 'M', 'L']
 	},
 	{
 		type: 'hot',
 		trayQty: 0,
+		utensil: 'Spoon',
 		name: 'Mac Tray',
 		sizes: ['S', 'L']
 	},
 	{
 		type: 'hot',
 		trayQty: 0,
+		utensil: 'Tong',
 		name: 'Chick-n-Minis Tray',
 		sizes: ['S', 'L']
 	},
@@ -32,48 +36,56 @@ export const trays = [
 	{
 		type: 'cold',
 		trayQty: 0,
+		utensil: 'Tong',
 		name: 'Salad Tray',
 		sizes: ['S', 'M', 'L']
 	},
 	{
 		type: 'cold',
 		trayQty: 0,
+		utensil: 'Tong',
 		name: 'Grilled Wrap Tray',
 		sizes: ['S', 'M', 'L']
 	},
 	{
 		type: 'cold',
 		trayQty: 0,
+		utensil: 'Tong',
 		name: 'Chilled Grilled Tray',
 		sizes: ['S', 'M', 'L']
 	},
 	{
 		type: 'cold',
 		trayQty: 0,
+		utensil: 'Spoon',
 		name: 'Fruit Tray',
 		sizes: ['S', 'L']
 	},
 	{
 		type: 'cold',
 		trayQty: 0,
+		utensil: 'Tong',
 		name: 'Kale Tray',
 		sizes: ['S', 'L']
 	},
 	{
 		type: 'dry',
 		trayQty: 0,
+		utensil: 'Tong',
 		name: 'Cookie Tray',
 		sizes: ['S', 'L']
 	},
 	{
 		type: 'dry',
 		trayQty: 0,
+		utensil: 'Tong',
 		name: 'Cookie & Brownie Tray',
 		sizes: ['S', 'L']
 	},
 	{
 		type: 'dry',
 		trayQty: 0,
+		utensil: 'Tong',
 		name: 'Brownie Tray',
 		sizes: ['S', 'L']
 	},

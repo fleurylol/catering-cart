@@ -1,13 +1,20 @@
 <script lang="ts">
 	import { trays } from '$lib/trayList';
 	import { allTrays } from '$lib/traySearch';
-	import type { TrayType } from '$lib/types';
+	import type { TrayType, OrderType } from '$lib/types';
 	import classnames from 'classnames';
 	let trayFilter = $state(trays.filter((tray) => tray.type === ''));
 	let selectedTray = $state('');
 	let selectedSize = $state('');
 	let trayCart = $state<TrayType>([]);
-	let order = $state([]);
+	let order = $state({
+		spoonTotal: 0,
+		tongTotal: 0,
+		free8oz: 0,
+		honey: 0,
+		roasted_almonds: 0,
+		dressings: 0
+	});
 	function setActiveTab(tab: string) {
 		selectedSize = '';
 		selectedTray = '';
@@ -29,6 +36,7 @@
 			trayCart.push({
 				id: crypto.randomUUID(),
 				trayQty: 1,
+				utensil: allTrays.find((t) => t.name === selectedTray)?.utensil!,
 				tray: selectedTray,
 				size: selectedSize
 			});
@@ -46,18 +54,39 @@
 
 	function submitCart() {
 		trayCart.forEach((tray) => {
-			const trayIndex = allTrays.findIndex((t) => t.name === tray.tray);
-			if (trayIndex !== -1) {
-				const sizes = allTrays[trayIndex].sizes;
-				const sizeArray = Object.entries(sizes).map(([key, value]) => ({ name: key, ...value }));
-				const traySize = sizeArray.find((size) => size.name === tray.size);
-				if (traySize) {
-					console.log(tray.trayQty, tray.tray, tray.size, traySize);
+			if (tray.utensil === 'Spoon') {
+				order.spoonTotal += tray.trayQty;
+			} else if (tray.utensil === 'Tong') {
+				if (tray.tray === 'Grilled Bundle') {
+					console.log('Grilled Bundle');
+					order.tongTotal += 3;
 				} else {
-					console.error(`Size ${tray.size} not found for tray ${tray.tray}`);
+					order.tongTotal += tray.trayQty;
 				}
 			} else {
-				console.error(`Tray with name ${tray.tray} not found`);
+				console.log('Utensil not found');
+			}
+			console.log(tray.tray);
+
+			const trayIndex = allTrays.findIndex((t) => t.name === tray.tray);
+			if (trayIndex !== -1) {
+				if (tray.size === 'S') {
+					order.free8oz += allTrays[trayIndex].sizes.S?.free8oz!;
+					order.honey += allTrays[trayIndex].sizes.S?.honey!;
+					order.roasted_almonds += allTrays[trayIndex].sizes.S?.roasted_almonds!;
+				}
+				if (tray.size === 'M') {
+					order.free8oz += allTrays[trayIndex].sizes.M?.free8oz!;
+					order.honey += allTrays[trayIndex].sizes.M?.honey!;
+					order.roasted_almonds += allTrays[trayIndex].sizes.M?.roasted_almonds!;
+				}
+				if (tray.size === 'L') {
+					order.free8oz += allTrays[trayIndex].sizes.L?.free8oz!;
+					order.honey += allTrays[trayIndex].sizes.L?.honey!;
+					order.roasted_almonds += allTrays[trayIndex].sizes.L?.roasted_almonds!;
+				}
+			} else {
+				console.log('Tray not found' + tray.tray);
 			}
 		});
 	}
@@ -125,6 +154,15 @@
 				>Submit</button
 			>
 		{/if}
+	</div>
+	<div class="mt-2">
+		<h2 class="text-lg font-bold">Utensil Totals:</h2>
+		<div>Spoons: {order.spoonTotal}</div>
+		<div>Tongs: {order.tongTotal}</div>
+		<div>Free 8oz: {order.free8oz}</div>
+		<div>Honey: {order.honey}</div>
+		<div>Roasted Almonds: {order.roasted_almonds}</div>
+		<div>Dressings: {order.dressings}</div>
 	</div>
 </div>
 
