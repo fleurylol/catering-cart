@@ -66,7 +66,8 @@
 
 	function submitCart() {
 		trayCart.forEach((tray) => {
-			if (tray.notes) {
+			const noteExists = notes.some((noteObj) => noteObj.note === tray.notes);
+			if (!noteExists) {
 				notes.push({ note: tray.notes });
 			}
 			if (tray.utensil === 'Spoon') {
@@ -182,7 +183,7 @@
 				<div class="mt-2 flex gap-2">
 					{#each tray.sizes as size}
 						<button
-							class={classnames({'size rounded-md': true, 'bg-gray-200': size === selectedSize })}
+							class={classnames({ 'size rounded-md': true, 'bg-gray-200': size === selectedSize })}
 							onclick={() => setSize(size)}>{size}</button
 						>
 					{/each}
