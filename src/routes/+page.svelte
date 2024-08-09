@@ -15,6 +15,7 @@
 		free8oz: 0,
 		honey: 0,
 		roasted_almonds: 0,
+		honeyRoastedBBQ: 0,
 		dressings: {
 			avoRanch: 0,
 			ranch: 0,
@@ -23,8 +24,7 @@
 			lightBalsamicVinaigrette: 0,
 			lightItalian: 0,
 			creamySalsa: 0
-		},
-		honeyRoastedBBQ: 0
+		}
 	});
 	function setActiveTab(tab: string) {
 		selectedSize = '';
@@ -103,31 +103,31 @@
 					order.free8oz += allTrays[trayIndex].sizes.M?.free8oz!;
 					order.honey += allTrays[trayIndex].sizes.M?.honey!;
 					order.roasted_almonds += allTrays[trayIndex].sizes.M?.roasted_almonds!;
-					order.dressings.avoRanch += allTrays[trayIndex].sizes.S?.dressings?.avoRanch!;
-					order.dressings.ranch += allTrays[trayIndex].sizes.S?.dressings?.ranch!;
+					order.dressings.avoRanch += allTrays[trayIndex].sizes.M?.dressings?.avoRanch!;
+					order.dressings.ranch += allTrays[trayIndex].sizes.M?.dressings?.ranch!;
 					order.dressings.zestyAppleCider +=
-						allTrays[trayIndex].sizes.S?.dressings?.zestyAppleCider!;
+						allTrays[trayIndex].sizes.M?.dressings?.zestyAppleCider!;
 					order.dressings.fatFreeHoneyMustard +=
-						allTrays[trayIndex].sizes.S?.dressings?.fatFreeHoneyMustard!;
+						allTrays[trayIndex].sizes.M?.dressings?.fatFreeHoneyMustard!;
 					order.dressings.lightBalsamicVinaigrette +=
-						allTrays[trayIndex].sizes.S?.dressings?.lightBalsamicVinaigrette!;
-					order.dressings.lightItalian += allTrays[trayIndex].sizes.S?.dressings?.lightItalian!;
-					order.dressings.creamySalsa += allTrays[trayIndex].sizes.S?.dressings?.creamySalsa!;
+						allTrays[trayIndex].sizes.M?.dressings?.lightBalsamicVinaigrette!;
+					order.dressings.lightItalian += allTrays[trayIndex].sizes.M?.dressings?.lightItalian!;
+					order.dressings.creamySalsa += allTrays[trayIndex].sizes.M?.dressings?.creamySalsa!;
 				}
 				if (tray.size === 'L') {
 					order.free8oz += allTrays[trayIndex].sizes.L?.free8oz!;
 					order.honey += allTrays[trayIndex].sizes.L?.honey!;
 					order.roasted_almonds += allTrays[trayIndex].sizes.L?.roasted_almonds!;
-					order.dressings.avoRanch += allTrays[trayIndex].sizes.S?.dressings?.avoRanch!;
-					order.dressings.ranch += allTrays[trayIndex].sizes.S?.dressings?.ranch!;
+					order.dressings.avoRanch += allTrays[trayIndex].sizes.L?.dressings?.avoRanch!;
+					order.dressings.ranch += allTrays[trayIndex].sizes.L?.dressings?.ranch!;
 					order.dressings.zestyAppleCider +=
-						allTrays[trayIndex].sizes.S?.dressings?.zestyAppleCider!;
+						allTrays[trayIndex].sizes.L?.dressings?.zestyAppleCider!;
 					order.dressings.fatFreeHoneyMustard +=
-						allTrays[trayIndex].sizes.S?.dressings?.fatFreeHoneyMustard!;
+						allTrays[trayIndex].sizes.L?.dressings?.fatFreeHoneyMustard!;
 					order.dressings.lightBalsamicVinaigrette +=
-						allTrays[trayIndex].sizes.S?.dressings?.lightBalsamicVinaigrette!;
-					order.dressings.lightItalian += allTrays[trayIndex].sizes.S?.dressings?.lightItalian!;
-					order.dressings.creamySalsa += allTrays[trayIndex].sizes.S?.dressings?.creamySalsa!;
+						allTrays[trayIndex].sizes.L?.dressings?.lightBalsamicVinaigrette!;
+					order.dressings.lightItalian += allTrays[trayIndex].sizes.L?.dressings?.lightItalian!;
+					order.dressings.creamySalsa += allTrays[trayIndex].sizes.L?.dressings?.creamySalsa!;
 				}
 			} else {
 				console.log('Tray not found' + tray.tray);
@@ -182,7 +182,7 @@
 				<div class="mt-2 flex gap-2">
 					{#each tray.sizes as size}
 						<button
-							class={classnames({ 'size rounded-md': true, 'bg-gray-200': size === selectedSize })}
+							class={classnames({'size rounded-md': true, 'bg-gray-200': size === selectedSize })}
 							onclick={() => setSize(size)}>{size}</button
 						>
 					{/each}

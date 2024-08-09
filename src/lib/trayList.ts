@@ -39,7 +39,7 @@ export const trays = [
 		trayQty: 0,
 		utensil: 'Tong',
 		name: 'Salad Tray',
-		sizes: ['S', 'M', 'L']
+		sizes: ['S', 'L']
 	},
 	{
 		type: 'cold',

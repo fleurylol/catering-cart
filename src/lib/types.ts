@@ -14,6 +14,7 @@ export type Notes = {
 export type OrderType = {
 	tongCount: number;
 	spoonCount: number;
+	utensil: string;
 	notes: Notes;
 	serving_size: number;
 	honey: number;
