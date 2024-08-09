@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { trays } from '$lib/trayList';
 	import { allTrays } from '$lib/traySearch';
-	import type { TrayType, OrderType } from '$lib/types';
+	import type { TrayType } from '$lib/types';
 	import classnames from 'classnames';
 	let trayFilter = $state(trays.filter((tray) => tray.type === ''));
 	let selectedTray = $state('');
@@ -13,7 +13,16 @@
 		free8oz: 0,
 		honey: 0,
 		roasted_almonds: 0,
-		dressings: 0
+		dressings: {
+			avoRanch: 0,
+			ranch: 0,
+			zestyAppleCider: 0,
+			fatFreeHoneyMustard: 0,
+			lightBalsamicVinaigrette: 0,
+			lightItalian: 0,
+			creamySalsa: 0
+		},
+		honeyRoastedBBQ: 0
 	});
 	function setActiveTab(tab: string) {
 		selectedSize = '';
@@ -58,15 +67,14 @@
 				order.spoonTotal += tray.trayQty;
 			} else if (tray.utensil === 'Tong') {
 				if (tray.tray === 'Grilled Bundle') {
-					console.log('Grilled Bundle');
 					order.tongTotal += 3;
+					order.honeyRoastedBBQ += 10;
 				} else {
 					order.tongTotal += tray.trayQty;
 				}
 			} else {
 				console.log('Utensil not found');
 			}
-			console.log(tray.tray);
 
 			const trayIndex = allTrays.findIndex((t) => t.name === tray.tray);
 			if (trayIndex !== -1) {
@@ -74,16 +82,46 @@
 					order.free8oz += allTrays[trayIndex].sizes.S?.free8oz!;
 					order.honey += allTrays[trayIndex].sizes.S?.honey!;
 					order.roasted_almonds += allTrays[trayIndex].sizes.S?.roasted_almonds!;
+					order.dressings.avoRanch += allTrays[trayIndex].sizes.S?.dressings?.avoRanch!;
+					order.dressings.ranch += allTrays[trayIndex].sizes.S?.dressings?.ranch!;
+					order.dressings.zestyAppleCider +=
+						allTrays[trayIndex].sizes.S?.dressings?.zestyAppleCider!;
+					order.dressings.fatFreeHoneyMustard +=
+						allTrays[trayIndex].sizes.S?.dressings?.fatFreeHoneyMustard!;
+					order.dressings.lightBalsamicVinaigrette +=
+						allTrays[trayIndex].sizes.S?.dressings?.lightBalsamicVinaigrette!;
+					order.dressings.lightItalian += allTrays[trayIndex].sizes.S?.dressings?.lightItalian!;
+					order.dressings.creamySalsa += allTrays[trayIndex].sizes.S?.dressings?.creamySalsa!;
 				}
 				if (tray.size === 'M') {
 					order.free8oz += allTrays[trayIndex].sizes.M?.free8oz!;
 					order.honey += allTrays[trayIndex].sizes.M?.honey!;
 					order.roasted_almonds += allTrays[trayIndex].sizes.M?.roasted_almonds!;
+					order.dressings.avoRanch += allTrays[trayIndex].sizes.S?.dressings?.avoRanch!;
+					order.dressings.ranch += allTrays[trayIndex].sizes.S?.dressings?.ranch!;
+					order.dressings.zestyAppleCider +=
+						allTrays[trayIndex].sizes.S?.dressings?.zestyAppleCider!;
+					order.dressings.fatFreeHoneyMustard +=
+						allTrays[trayIndex].sizes.S?.dressings?.fatFreeHoneyMustard!;
+					order.dressings.lightBalsamicVinaigrette +=
+						allTrays[trayIndex].sizes.S?.dressings?.lightBalsamicVinaigrette!;
+					order.dressings.lightItalian += allTrays[trayIndex].sizes.S?.dressings?.lightItalian!;
+					order.dressings.creamySalsa += allTrays[trayIndex].sizes.S?.dressings?.creamySalsa!;
 				}
 				if (tray.size === 'L') {
 					order.free8oz += allTrays[trayIndex].sizes.L?.free8oz!;
 					order.honey += allTrays[trayIndex].sizes.L?.honey!;
 					order.roasted_almonds += allTrays[trayIndex].sizes.L?.roasted_almonds!;
+					order.dressings.avoRanch += allTrays[trayIndex].sizes.S?.dressings?.avoRanch!;
+					order.dressings.ranch += allTrays[trayIndex].sizes.S?.dressings?.ranch!;
+					order.dressings.zestyAppleCider +=
+						allTrays[trayIndex].sizes.S?.dressings?.zestyAppleCider!;
+					order.dressings.fatFreeHoneyMustard +=
+						allTrays[trayIndex].sizes.S?.dressings?.fatFreeHoneyMustard!;
+					order.dressings.lightBalsamicVinaigrette +=
+						allTrays[trayIndex].sizes.S?.dressings?.lightBalsamicVinaigrette!;
+					order.dressings.lightItalian += allTrays[trayIndex].sizes.S?.dressings?.lightItalian!;
+					order.dressings.creamySalsa += allTrays[trayIndex].sizes.S?.dressings?.creamySalsa!;
 				}
 			} else {
 				console.log('Tray not found' + tray.tray);
@@ -156,13 +194,45 @@
 		{/if}
 	</div>
 	<div class="mt-2">
-		<h2 class="text-lg font-bold">Utensil Totals:</h2>
-		<div>Spoons: {order.spoonTotal}</div>
-		<div>Tongs: {order.tongTotal}</div>
-		<div>Free 8oz: {order.free8oz}</div>
-		<div>Honey: {order.honey}</div>
-		<div>Roasted Almonds: {order.roasted_almonds}</div>
-		<div>Dressings: {order.dressings}</div>
+		<h2 class="text-lg font-bold">Totals:</h2>
+		<div class="m-auto flex w-[200px] justify-between p-2">
+			<div class="dressing">Spoons: {order.spoonTotal}</div>
+			<div class="dressing">Tongs: {order.tongTotal}</div>
+		</div>
+		<div class="grid grid-cols-2 gap-2">
+			<div class="dressing">Free 8oz: {order.free8oz}</div>
+			<div class="dressing">Honey: {order.honey}</div>
+			<div class="dressing">Roasted Almonds: {order.roasted_almonds}</div>
+			<div class="dressing">Honey Roasted BBQ: {order.honeyRoastedBBQ}</div>
+		</div>
+		{#if order.dressings.avoRanch > 0}
+			<h1 class="pt-2 text-xl font-bold">Dressings:</h1>
+			<div class="grid grid-cols-3 gap-4 p-2">
+				<div class="dressing">
+					<span> Avocado Lime Ranch </span><span>{order.dressings.avoRanch}</span>
+				</div>
+				<div class="dressing">
+					<span>Garden Herb Ranch</span><span>{order.dressings.ranch}</span>
+				</div>
+				<div class="dressing">
+					<span>Zesty Apple Cider</span><span>{order.dressings.zestyAppleCider}</span>
+				</div>
+				<div class="dressing">
+					<span>Fat Free Honey Mustard</span><span>{order.dressings.fatFreeHoneyMustard}</span>
+				</div>
+				<div class="dressing">
+					<span>Light Balsamic Vinaigrette</span><span
+						>{order.dressings.lightBalsamicVinaigrette}</span
+					>
+				</div>
+				<div class="dressing">
+					<span>Light Italian</span><span>{order.dressings.lightItalian}</span>
+				</div>
+				<div class="dressing">
+					<span>Creamy Salsa</span><span>{order.dressings.creamySalsa}</span>
+				</div>
+			</div>
+		{/if}
 	</div>
 </div>
 
@@ -188,5 +258,13 @@
 		font-size: large;
 		padding: 8px;
 		padding: 0.5rem;
+	}
+	.dressing {
+		text-align: center;
+		border-radius: 10px;
+		border: black 1px solid;
+		padding: 0.5rem;
+		display: flex;
+		flex-direction: column;
 	}
 </style>

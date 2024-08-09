@@ -13,7 +13,15 @@ export type OrderType = {
 	honey: number;
 	free8oz: number;
 	roasted_almonds: number;
-	dressings: string[] | null;
+	dressings: {
+		avoRanch: number;
+		ranch: number;
+		zestyAppleCider: number;
+		fatFreeHoneyMustard: number;
+		lightBalsamicVinaigrette: number;
+		lightItalian: number;
+		creamySalsa: number;
+	};
 };
 
 export type Tray = Array<{
@@ -30,7 +38,15 @@ export type Tray = Array<{
 			honey: number | null;
 			free8oz: number | null;
 			roasted_almonds: number | null;
-			dressings: string[] | null;
+			dressings: {
+				avoRanch: number;
+				ranch: number;
+				zestyAppleCider: number;
+				fatFreeHoneyMustard: number;
+				lightBalsamicVinaigrette: number;
+				lightItalian: number;
+				creamySalsa: number;
+			};
 		} | null;
 		M: {
 			serving_size: number;
@@ -38,7 +54,15 @@ export type Tray = Array<{
 			honey: number | null;
 			free8oz: number | null;
 			roasted_almonds: number | null;
-			dressings: string[] | null;
+			dressings: {
+				avoRanch: number;
+				ranch: number;
+				zestyAppleCider: number;
+				fatFreeHoneyMustard: number;
+				lightBalsamicVinaigrette: number;
+				lightItalian: number;
+				creamySalsa: number;
+			};
 		} | null;
 		L: {
 			serving_size: number;
@@ -46,7 +70,15 @@ export type Tray = Array<{
 			honey: number | null;
 			free8oz: number | null;
 			roasted_almonds: number | null;
-			dressings: string[] | null;
+			dressings: {
+				avoRanch: number;
+				ranch: number;
+				zestyAppleCider: number;
+				fatFreeHoneyMustard: number;
+				lightBalsamicVinaigrette: number;
+				lightItalian: number;
+				creamySalsa: number;
+			};
 		} | null;
 	};
 }>;
@@ -66,7 +98,17 @@ export interface TrayInfoProps {
 				honey: number | null;
 				free8oz: number | null;
 				roasted_almonds: number | null;
-				dressings: string[] | null;
+				dressings:
+					| {
+							avoRanch: number;
+							ranch: number;
+							zestyAppleCider: number;
+							fatFreeHoneyMustard: number;
+							lightBalsamicVinaigrette: number;
+							lightItalian: number;
+							creamySalsa: number;
+					  }
+					| number;
 			} | null;
 			M: {
 				serving_size: number;
@@ -74,7 +116,17 @@ export interface TrayInfoProps {
 				honey: number | null;
 				free8oz: number | null;
 				roasted_almonds: number | null;
-				dressings: string[] | null;
+				dressings:
+					| {
+							avoRanch: number;
+							ranch: number;
+							zestyAppleCider: number;
+							fatFreeHoneyMustard: number;
+							lightBalsamicVinaigrette: number;
+							lightItalian: number;
+							creamySalsa: number;
+					  }
+					| number;
 			} | null;
 			L: {
 				serving_size: number;
@@ -82,7 +134,17 @@ export interface TrayInfoProps {
 				honey: number | null;
 				free8oz: number | null;
 				roasted_almonds: number | null;
-				dressings: string[] | null;
+				dressings:
+					| {
+							avoRanch: number;
+							ranch: number;
+							zestyAppleCider: number;
+							fatFreeHoneyMustard: number;
+							lightBalsamicVinaigrette: number;
+							lightItalian: number;
+							creamySalsa: number;
+					  }
+					| number;
 			} | null;
 		};
 	};

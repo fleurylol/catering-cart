@@ -30,6 +30,7 @@ export const trays = [
 	{
 		type: 'hot',
 		trayQty: 0,
+		utensil: 'Tong',
 		name: 'Grilled Bundle',
 		sizes: ['One Size']
 	},

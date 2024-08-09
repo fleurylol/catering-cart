@@ -11,26 +11,42 @@ export const allTrays: Tray = [
 			S: {
 				serving_size: 8,
 				quantity: 64,
-				honey: null,
+				honey: 0,
 				free8oz: 1,
-				roasted_almonds: null,
-				dressings: null
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			},
 			M: {
 				serving_size: 15,
 				quantity: 120,
-				honey: null,
+				honey: 0,
 				free8oz: 1,
-				roasted_almonds: null,
-				dressings: null
+				roasted_almonds: 0,
+				dressings: 0
 			},
 			L: {
 				serving_size: 25,
 				quantity: 200,
-				honey: null,
+				honey: 0,
 				free8oz: 2,
-				roasted_almonds: null,
-				dressings: null
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			}
 		}
 	},
@@ -45,26 +61,50 @@ export const allTrays: Tray = [
 			S: {
 				serving_size: 8,
 				quantity: 24,
-				honey: null,
+				honey: 0,
 				free8oz: 1,
-				roasted_almonds: null,
-				dressings: null
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			},
 			M: {
 				serving_size: 15,
 				quantity: 45,
-				honey: null,
+				honey: 0,
 				free8oz: 1,
-				roasted_almonds: null,
-				dressings: null
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			},
 			L: {
 				serving_size: 25,
 				quantity: 75,
-				honey: null,
+				honey: 0,
 				free8oz: 2,
-				roasted_almonds: null,
-				dressings: null
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			}
 		}
 	},
@@ -78,20 +118,36 @@ export const allTrays: Tray = [
 		sizes: {
 			S: {
 				serving_size: 10,
-				quantity: null,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: null
+				quantity: 0,
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			},
 			M: null,
 			L: {
 				serving_size: 20,
-				quantity: null,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: null
+				quantity: 0,
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			}
 		}
 	},
@@ -107,18 +163,34 @@ export const allTrays: Tray = [
 				serving_size: 5,
 				quantity: 20,
 				honey: 10,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: null
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			},
 			M: null,
 			L: {
 				serving_size: 10,
 				quantity: 40,
 				honey: 20,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: null
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			}
 		}
 	},
@@ -127,7 +199,7 @@ export const allTrays: Tray = [
 		img: 'https://www.cfacdn.com/img/order/COM/Menu_Refresh/Catering/Catering%20Desktop/GrilledFiletChick_Bundle_Desk.png',
 		name: 'Grilled Bundle',
 		variants: null,
-		utensil: 'Tong 3x',
+		utensil: 'Tong',
 		notes:
 			'Includes 10 multigrain buns (repacked in ice bag), 30 half strips of bacon (packed day of), and 10 Honey Roasted BBQ Sauce',
 		sizes: {
@@ -135,10 +207,18 @@ export const allTrays: Tray = [
 			M: {
 				serving_size: 10,
 				quantity: 10,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: null
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			},
 			L: null
 		}
@@ -153,36 +233,36 @@ export const allTrays: Tray = [
 		sizes: {
 			S: {
 				serving_size: 5,
-				quantity: null,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: [
-					'Avocado Lime Ranch - 2',
-					'Garden Herb Ranch - 2',
-					'Zesty Apple Cider Vinaigrette - 1',
-					'Fat-Free Honey Mustard - 1',
-					'Light Italian - 1',
-					'Light Balsamic Vinaigrette - 1',
-					'Creamy Salsa - 1'
-				]
+				quantity: 0,
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 2,
+					ranch: 2,
+					zestyAppleCider: 1,
+					fatFreeHoneyMustard: 1,
+					lightBalsamicVinaigrette: 1,
+					lightItalian: 1,
+					creamySalsa: 1
+				}
 			},
 			M: null,
 			L: {
 				serving_size: 10,
-				quantity: null,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: [
-					'Avocado Lime Ranch - 3',
-					'Garden Herb Ranch - 3',
-					'Zesty Apple Cider Vinaigrette - 2',
-					'Fat-Free Honey Mustard - 2',
-					'Light Italian - 2',
-					'Light Balsamic Vinaigrette - 2',
-					'Creamy Salsa - 1'
-				]
+				quantity: 0,
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 3,
+					ranch: 3,
+					zestyAppleCider: 2,
+					fatFreeHoneyMustard: 2,
+					lightBalsamicVinaigrette: 2,
+					lightItalian: 2,
+					creamySalsa: 2
+				}
 			}
 		}
 	},
@@ -197,20 +277,36 @@ export const allTrays: Tray = [
 		sizes: {
 			S: {
 				serving_size: 12,
-				quantity: null,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: null
+				quantity: 0,
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			},
 			M: null,
 			L: {
 				serving_size: 26,
-				quantity: null,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: null
+				quantity: 0,
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			}
 		}
 	},
@@ -225,20 +321,36 @@ export const allTrays: Tray = [
 		sizes: {
 			S: {
 				serving_size: 10,
-				quantity: null,
-				honey: null,
-				free8oz: null,
+				quantity: 0,
+				honey: 0,
+				free8oz: 0,
 				roasted_almonds: 10,
-				dressings: null
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			},
 			M: null,
 			L: {
 				serving_size: 20,
-				quantity: null,
-				honey: null,
-				free8oz: null,
+				quantity: 0,
+				honey: 0,
+				free8oz: 0,
 				roasted_almonds: 20,
-				dressings: null
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			}
 		}
 	},
@@ -254,10 +366,18 @@ export const allTrays: Tray = [
 			S: {
 				serving_size: 6,
 				quantity: 6,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: ['Avocado Lime Ranch - 6']
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 6,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			},
 			M: {
 				serving_size: 10,
@@ -265,31 +385,31 @@ export const allTrays: Tray = [
 				honey: null,
 				free8oz: null,
 				roasted_almonds: null,
-				dressings: [
-					'Avocado Lime Ranch - 1',
-					'Garden Herb Ranch - 1',
-					'Zesty Apple Cider Vinaigrette - 1',
-					'Fat-Free Honey Mustard - 1',
-					'Light Italian - 1',
-					'Light Balsamic Vinaigrette - 1',
-					'Creamy Salsa - 1'
-				]
+				dressings: {
+					avoRanch: 10,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			},
 			L: {
 				serving_size: 14,
 				quantity: 14,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: [
-					'Avocado Lime Ranch - 1',
-					'Garden Herb Ranch - 1',
-					'Zesty Apple Cider Vinaigrette - 1',
-					'Fat-Free Honey Mustard - 1',
-					'Light Italian - 1',
-					'Light Balsamic Vinaigrette - 1',
-					'Creamy Salsa - 1'
-				]
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 10,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			}
 		}
 	},
@@ -304,50 +424,50 @@ export const allTrays: Tray = [
 			S: {
 				serving_size: 6,
 				quantity: 6,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: [
-					'Avocado Lime Ranch - 1',
-					'Garden Herb Ranch - 1',
-					'Zesty Apple Cider Vinaigrette - 1',
-					'Fat-Free Honey Mustard - 1',
-					'Light Italian - 1',
-					'Light Balsamic Vinaigrette - 1',
-					'Creamy Salsa - 1'
-				]
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			},
 			M: {
 				serving_size: 10,
 				quantity: 10,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: [
-					'Avocado Lime Ranch - 1',
-					'Garden Herb Ranch - 1',
-					'Zesty Apple Cider Vinaigrette - 1',
-					'Fat-Free Honey Mustard - 1',
-					'Light Italian - 1',
-					'Light Balsamic Vinaigrette - 1',
-					'Creamy Salsa - 1'
-				]
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			},
 			L: {
 				serving_size: 14,
 				quantity: 14,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: [
-					'Avocado Lime Ranch - 1',
-					'Garden Herb Ranch - 1',
-					'Zesty Apple Cider Vinaigrette - 1',
-					'Fat-Free Honey Mustard - 1',
-					'Light Italian - 1',
-					'Light Balsamic Vinaigrette - 1',
-					'Creamy Salsa - 1'
-				]
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			}
 		}
 	},
@@ -362,19 +482,35 @@ export const allTrays: Tray = [
 			S: {
 				serving_size: 12,
 				quantity: 12,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: null
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			},
 			M: null,
 			L: {
 				serving_size: 24,
 				quantity: 24,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: null
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			}
 		}
 	},
@@ -390,19 +526,35 @@ export const allTrays: Tray = [
 			S: {
 				serving_size: 12,
 				quantity: 12,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: null
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			},
 			M: null,
 			L: {
 				serving_size: 24,
 				quantity: 24,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: null
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			}
 		}
 	},
@@ -417,19 +569,35 @@ export const allTrays: Tray = [
 			S: {
 				serving_size: 12,
 				quantity: 6,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: null
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			},
 			M: null,
 			L: {
 				serving_size: 24,
 				quantity: 12,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
-				dressings: null
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			}
 		}
 	}
