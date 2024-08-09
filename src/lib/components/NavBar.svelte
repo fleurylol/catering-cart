@@ -1,6 +1,5 @@
 <nav class="flex w-full justify-between bg-red-500 text-white">
-	<a href={'/'}>Catering Companion</a>
-	<a href={'/cart'}>Cart</a>
+	<a href={'/'}>Catering Cart</a>
 </nav>
 
 <style>

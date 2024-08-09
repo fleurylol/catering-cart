@@ -1,14 +1,20 @@
 export type TrayType = {
 	id: `${string}-${string}-${string}-${string}-${string}`;
 	utensil: string;
+	notes: string;
 	trayQty: number;
 	tray: string;
 	size: string;
 }[];
 
+export type Notes = {
+	note: string;
+}[];
+
 export type OrderType = {
 	tongCount: number;
-	SpoonCount: number;
+	spoonCount: number;
+	notes: Notes;
 	serving_size: number;
 	honey: number;
 	free8oz: number;
