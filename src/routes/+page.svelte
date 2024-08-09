@@ -1,4 +1,3 @@
 <div>
-	<h1>Page</h1>
-	<p>This is a page.</p>
+	<a href="/cart">cart button</a>
 </div>
