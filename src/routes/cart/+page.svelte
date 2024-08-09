@@ -6,6 +6,7 @@
 	let trayFilter = $state(trays.filter((tray) => tray.type === ''));
 	let selectedTray = $state('');
 	let selectedSize = $state('');
+	let orderSubmitted = $state(false);
 	let trayCart = $state<TrayType>([]);
 	let order = $state({
 		spoonTotal: 0,
@@ -127,6 +128,30 @@
 				console.log('Tray not found' + tray.tray);
 			}
 		});
+		orderSubmitted = true;
+	}
+
+	function resetOrder() {
+		order = {
+			spoonTotal: 0,
+			tongTotal: 0,
+			free8oz: 0,
+			honey: 0,
+			roasted_almonds: 0,
+			dressings: {
+				avoRanch: 0,
+				ranch: 0,
+				zestyAppleCider: 0,
+				fatFreeHoneyMustard: 0,
+				lightBalsamicVinaigrette: 0,
+				lightItalian: 0,
+				creamySalsa: 0
+			},
+			honeyRoastedBBQ: 0
+		};
+		trayCart = [];
+		orderSubmitted = false;
+		setActiveTab('');
 	}
 </script>
 
@@ -161,10 +186,17 @@
 		{/each}
 	{/if}
 	{#if selectedSize}
-		<button
-			class="mt-2 rounded-lg bg-black p-2 text-white"
-			onclick={() => addTrayToCart(selectedTray, selectedSize)}>Add to Cart</button
-		>
+		<div class="flex justify-between">
+			<button
+				class="mt-2 rounded-lg bg-black p-2 text-white"
+				onclick={() => addTrayToCart(selectedTray, selectedSize)}>Add to Cart</button
+			>
+			{#if orderSubmitted === true}
+				<button class="mt-2 rounded-lg bg-red-500 p-2 text-white" onclick={() => resetOrder()}
+					>Reset Cart</button
+				>
+			{/if}
+		</div>
 	{/if}
 	<div class="mt-2">
 		<h2 class="text-lg font-bold">Cart:</h2>

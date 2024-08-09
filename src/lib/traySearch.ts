@@ -30,7 +30,15 @@ export const allTrays: Tray = [
 				honey: 0,
 				free8oz: 1,
 				roasted_almonds: 0,
-				dressings: 0
+				dressings: {
+					avoRanch: 0,
+					ranch: 0,
+					zestyAppleCider: 0,
+					fatFreeHoneyMustard: 0,
+					lightBalsamicVinaigrette: 0,
+					lightItalian: 0,
+					creamySalsa: 0
+				}
 			},
 			L: {
 				serving_size: 25,
@@ -382,9 +390,9 @@ export const allTrays: Tray = [
 			M: {
 				serving_size: 10,
 				quantity: 10,
-				honey: null,
-				free8oz: null,
-				roasted_almonds: null,
+				honey: 0,
+				free8oz: 0,
+				roasted_almonds: 0,
 				dressings: {
 					avoRanch: 10,
 					ranch: 0,
