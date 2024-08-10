@@ -6,6 +6,7 @@
 	let trayFilter = $state(trays.filter((tray) => tray.type === ''));
 	let selectedTray = $state('');
 	let selectedSize = $state('');
+	let paperGoods = $state(false);
 	let orderSubmitted = $state(false);
 	let trayCart = $state<TrayType>([]);
 	let notes = $state<Notes>([]);
@@ -65,23 +66,7 @@
 	}
 
 	function submitCart() {
-		order = {
-			spoonTotal: 0,
-			tongTotal: 0,
-			free8oz: 0,
-			honey: 0,
-			roasted_almonds: 0,
-			dressings: {
-				avoRanch: 0,
-				ranch: 0,
-				zestyAppleCider: 0,
-				fatFreeHoneyMustard: 0,
-				lightBalsamicVinaigrette: 0,
-				lightItalian: 0,
-				creamySalsa: 0
-			},
-			honeyRoastedBBQ: 0
-		};
+		orderClear();
 		trayCart.forEach((tray) => {
 			if (tray.notes) {
 				const noteExists = notes.some((noteObj) => noteObj.note === tray.notes);
@@ -156,7 +141,7 @@
 		orderSubmitted = true;
 	}
 
-	function resetOrder() {
+	function orderClear() {
 		order = {
 			spoonTotal: 0,
 			tongTotal: 0,
@@ -174,6 +159,10 @@
 			},
 			honeyRoastedBBQ: 0
 		};
+	}
+
+	function resetOrder() {
+		orderClear();
 		trayCart = [];
 		notes = [];
 		orderSubmitted = false;
@@ -225,6 +214,15 @@
 		</div>
 	{/if}
 	<div class="mt-2">
+		<!-- <div>
+			Paper Goods?
+			<input
+				type="checkbox"
+				onchange={() => {
+					paperGoods = !paperGoods;
+				}}
+			/>
+		</div> -->
 		<h2 class="text-lg font-bold">Cart:</h2>
 		{#if trayCart.length === 0}
 			<div>Cart is empty</div>
