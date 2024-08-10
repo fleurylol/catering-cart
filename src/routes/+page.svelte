@@ -175,6 +175,7 @@
 			honeyRoastedBBQ: 0
 		};
 		trayCart = [];
+		notes = [];
 		orderSubmitted = false;
 		setActiveTab('');
 	}
