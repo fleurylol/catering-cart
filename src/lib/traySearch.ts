@@ -237,7 +237,7 @@ export const allTrays: Tray = [
 		name: 'Salad Tray',
 		variants: null,
 		utensil: 'Tong',
-		notes: 'If guest does no specify dressing, we will provide Avocado Lime Ranch',
+		notes: 'If guest does not specify dressing, we will provide a dressing assortment',
 		sizes: {
 			S: {
 				serving_size: 5,
@@ -369,7 +369,7 @@ export const allTrays: Tray = [
 		name: 'Grilled Wrap Tray',
 		variants: ['Spicy Grilled Wrap Tray', 'Veggie Wrap Tray'],
 		utensil: 'Tong',
-		notes: 'If guest does no specify dressing, we will provide Avocado Lime Ranch',
+		notes: 'If guest does not specify dressing, we will provide Avocado Lime Ranch',
 		sizes: {
 			S: {
 				serving_size: 6,
@@ -427,7 +427,7 @@ export const allTrays: Tray = [
 		name: 'Chilled Grilled Tray',
 		variants: ['Spicy Grilled Wrap Tray', 'Veggie Wrap Tray'],
 		utensil: 'Tong',
-		notes: 'If guest does no specify dressing, we will provide Avocado Lime Ranch',
+		notes: null,
 		sizes: {
 			S: {
 				serving_size: 6,
