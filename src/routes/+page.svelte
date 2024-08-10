@@ -168,7 +168,7 @@
 		<button class="item" onclick={() => setActiveTab('hot')}>Hot Tray </button>
 		<button class="item" onclick={() => setActiveTab('cold')}>Cold Tray</button>
 		<!-- <button class="item" onclick={() => setActiveTab('box')}>Box Meal</button> -->
-		<button class="item" onclick={() => setActiveTab('salad')}>Salad Kits</button>
+		<!-- <button class="item" onclick={() => setActiveTab('salad')}>Salad Kits</button> -->
 		<button class="item" onclick={() => setActiveTab('dry')}>Dry Goods</button>
 	</div>
 	<div class="mt-2 grid grid-cols-2 gap-2">
