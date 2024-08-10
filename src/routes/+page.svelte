@@ -161,10 +161,6 @@
 		orderSubmitted = false;
 		setActiveTab('');
 	}
-
-	function saveOrder() {
-		localStorage.setItem('order', JSON.stringify(order));
-	}
 </script>
 
 <div class="m-2 w-full">
@@ -203,7 +199,6 @@
 				class="mt-2 rounded-lg bg-black p-2 text-white"
 				onclick={() => addTrayToCart(selectedTray, selectedSize)}>Add to Cart</button
 			>
-			<button class="mt-2" onclick={() => saveOrder()}> Save </button>
 			{#if orderSubmitted === true}
 				<button class="mt-2 rounded-lg bg-red-500 p-2 text-white" onclick={() => resetOrder()}
 					>Reset Cart</button

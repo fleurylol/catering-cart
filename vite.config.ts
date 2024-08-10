@@ -9,7 +9,8 @@ export default defineConfig({
 				// search up for workspace root
 				searchForWorkspaceRoot(process.cwd()),
 				// your custom rules
-				'/static/favicon.ico'
+				'/static/favicon.ico',
+        '/favicon.ico'
 			]
 		}
 	}
