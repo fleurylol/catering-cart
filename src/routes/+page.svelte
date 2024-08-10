@@ -65,6 +65,23 @@
 	}
 
 	function submitCart() {
+		order = {
+			spoonTotal: 0,
+			tongTotal: 0,
+			free8oz: 0,
+			honey: 0,
+			roasted_almonds: 0,
+			dressings: {
+				avoRanch: 0,
+				ranch: 0,
+				zestyAppleCider: 0,
+				fatFreeHoneyMustard: 0,
+				lightBalsamicVinaigrette: 0,
+				lightItalian: 0,
+				creamySalsa: 0
+			},
+			honeyRoastedBBQ: 0
+		};
 		trayCart.forEach((tray) => {
 			if (tray.notes) {
 				const noteExists = notes.some((noteObj) => noteObj.note === tray.notes);
