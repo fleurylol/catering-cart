@@ -569,7 +569,7 @@ export const allTrays: Tray = [
 	{
 		type: 'Dry',
 		img: 'https://www.cfacdn.com/img/order/menu/Online/Trays/BrownieCookieTray_pdp.png',
-		name: 'Cookie/Brownie Tray',
+		name: 'Cookie & Brownie Tray',
 		variants: null,
 		utensil: 'Tong',
 		notes: null,
