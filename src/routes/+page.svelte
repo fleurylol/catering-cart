@@ -78,8 +78,8 @@
 				order.spoonTotal += tray.trayQty;
 			} else if (tray.utensil === 'Tong') {
 				if (tray.tray === 'Grilled Bundle') {
-					order.tongTotal += 3;
-					order.honeyRoastedBBQ += 10;
+					order.tongTotal += 3 * tray.trayQty;
+					order.honeyRoastedBBQ += 10 * tray.trayQty;
 				} else {
 					order.tongTotal += tray.trayQty;
 				}
