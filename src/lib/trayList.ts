@@ -34,6 +34,7 @@ export const trays = [
 		name: 'Grilled Bundle',
 		sizes: ['One Size']
 	},
+	//cold
 	{
 		type: 'cold',
 		trayQty: 0,
@@ -69,6 +70,7 @@ export const trays = [
 		name: 'Kale Tray',
 		sizes: ['S', 'L']
 	},
+	//dry
 	{
 		type: 'dry',
 		trayQty: 0,
@@ -89,6 +91,42 @@ export const trays = [
 		utensil: 'Tong',
 		name: 'Brownie Tray',
 		sizes: ['S', 'L']
+	},
+	//box items
+	{
+		type: 'box',
+		trayQty: 0,
+		name: 'Chick-Fil-A Sandwich',
+		sizes: ['Cookie', 'Brownie'],
+		premium: ['N/A', 'Fruit', 'Kale']
+	},
+	{
+		type: 'box',
+		trayQty: 0,
+		name: 'Spicy Sandwich',
+		sizes: ['Cookie', 'Brownie'],
+		premium: ['N/A', 'Fruit', 'Kale']
+	},
+	{
+		type: 'box',
+		trayQty: 0,
+		name: 'Nuggets',
+		sizes: ['Cookie', 'Brownie'],
+		premium: ['N/A', 'Fruit', 'Kale']
+	},
+	{
+		type: 'box',
+		trayQty: 0,
+		name: 'Chilled Grilled Sub',
+		sizes: ['Cookie', 'Brownie'],
+		premium: ['N/A', 'Fruit', 'Kale']
+	},
+	{
+		type: 'box',
+		trayQty: 0,
+		name: 'Grilled Cool Wrap',
+		sizes: ['Cookie', 'Brownie'],
+		premium: ['N/A', 'Fruit', 'Kale']
 	},
 	{
 		type: 'salad',

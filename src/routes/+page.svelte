@@ -4,9 +4,11 @@
 	import type { TrayType, Notes } from '$lib/types';
 	import classnames from 'classnames';
 	let trayFilter = $state(trays.filter((tray) => tray.type === ''));
+	let selectedTab = $state('');
 	let selectedTray = $state('');
 	let selectedSize = $state('');
-	let paperGoods = $state(false);
+	let premium = $state('');
+	let trayQty = $state(1);
 	let orderSubmitted = $state(false);
 	let trayCart = $state<TrayType>([]);
 	let notes = $state<Notes>([]);
@@ -30,7 +32,10 @@
 	function setActiveTab(tab: string) {
 		selectedSize = '';
 		selectedTray = '';
+		premium = '';
+		trayQty = 1;
 		trayFilter = trays.filter((tray) => tray.type === tab);
+		selectedTab = tab;
 	}
 	function selectTray(tray: string) {
 		selectedTray = tray;
@@ -38,20 +43,30 @@
 	function setSize(size: string) {
 		selectedSize = size;
 	}
+	function setPremium(item: string) {
+		premium = item;
+	}
+
 	function addTrayToCart(selectedTray: string, selectedSize: string) {
-		if (trayCart.find((tray) => tray.tray === selectedTray && tray.size === selectedSize)) {
+		if (
+			trayCart.find(
+				(tray) =>
+					tray.tray === selectedTray && tray.size === selectedSize && tray.boxExtra === premium
+			)
+		) {
 			const trayIndex = trayCart.findIndex(
 				(tray) => tray.tray === selectedTray && tray.size === selectedSize
 			);
-			trayCart[trayIndex].trayQty += 1;
+			trayCart[trayIndex].trayQty += trayQty;
 		} else {
 			trayCart.push({
 				id: crypto.randomUUID(),
-				trayQty: 1,
+				trayQty: trayQty,
 				utensil: allTrays.find((t) => t.name === selectedTray)?.utensil!,
 				notes: allTrays.find((t) => t.name === selectedTray)?.notes!,
 				tray: selectedTray,
-				size: selectedSize
+				size: selectedSize,
+				boxExtra: premium
 			});
 		}
 	}
@@ -142,6 +157,7 @@
 	}
 
 	function orderClear() {
+		trayQty = 1;
 		order = {
 			spoonTotal: 0,
 			tongTotal: 0,
@@ -163,6 +179,7 @@
 
 	function resetOrder() {
 		orderClear();
+		premium = '';
 		trayCart = [];
 		notes = [];
 		orderSubmitted = false;
@@ -174,7 +191,7 @@
 	<div class="flex gap-1">
 		<button class="item" onclick={() => setActiveTab('hot')}>Hot Tray </button>
 		<button class="item" onclick={() => setActiveTab('cold')}>Cold Tray</button>
-		<!-- <button class="item" onclick={() => setActiveTab('box')}>Box Meal</button> -->
+		<button class="item" onclick={() => setActiveTab('box')}>Box Meal</button>
 		<!-- <button class="item" onclick={() => setActiveTab('salad')}>Salad Kits</button> -->
 		<button class="item" onclick={() => setActiveTab('dry')}>Dry Goods</button>
 	</div>
@@ -189,6 +206,9 @@
 	{#if selectedTray}
 		{#each trayFilter as tray}
 			{#if tray.name === selectedTray}
+				<h3 class="text-xl">
+					Select a {selectedTab === 'box' ? 'Treat:' : 'Size:'}
+				</h3>
 				<div class="mt-2 flex gap-2">
 					{#each tray.sizes as size}
 						<button
@@ -197,32 +217,51 @@
 						>
 					{/each}
 				</div>
+				<div class="mt-2">
+					{#if selectedTab === 'box' && selectedSize}
+						<h3 class="text-xl">Has a Kale Crunch or a Fruit Cup?</h3>
+						<div class="mt-2 flex gap-2">
+							{#each tray.premium! as item}
+								<button
+									class={classnames({
+										'size rounded-md': true,
+										'bg-gray-200': item === premium
+									})}
+									onclick={() => setPremium(item)}>{item}</button
+								>
+							{/each}
+						</div>
+					{/if}
+				</div>
 			{/if}
 		{/each}
 	{/if}
-	{#if selectedSize}
-		<div class="flex justify-between">
-			<button
-				class="mt-2 rounded-lg bg-black p-2 text-white"
-				onclick={() => addTrayToCart(selectedTray, selectedSize)}>Add to Cart</button
-			>
-			{#if orderSubmitted === true}
-				<button class="mt-2 rounded-lg bg-red-500 p-2 text-white" onclick={() => resetOrder()}
-					>Reset Cart</button
+	<div class="flex justify-between space-x-2">
+		{#if (selectedSize && selectedTab !== 'box') || (selectedTab === 'box' && premium)}
+			<div>
+				<button
+					class="mt-2 rounded-lg bg-black p-2 text-white"
+					onclick={() => addTrayToCart(selectedTray, selectedSize)}>Add to Cart</button
 				>
-			{/if}
-		</div>
-	{/if}
+				<input
+					class="mt-2 size-10 border text-center"
+					value="1"
+					onchange={(e) => {
+						const target = e.target as HTMLInputElement;
+						if (target) {
+							trayQty = parseInt(target.value);
+						}
+					}}
+				/>
+			</div>
+		{/if}
+		{#if orderSubmitted === true}
+			<button class="mt-2 rounded-lg bg-red-500 p-2 text-white" onclick={() => resetOrder()}
+				>Reset Cart</button
+			>
+		{/if}
+	</div>
 	<div class="mt-2">
-		<!-- <div>
-			Paper Goods?
-			<input
-				type="checkbox"
-				onchange={() => {
-					paperGoods = !paperGoods;
-				}}
-			/>
-		</div> -->
 		<h2 class="text-lg font-bold">Cart:</h2>
 		{#if trayCart.length === 0}
 			<div>Cart is empty</div>
@@ -234,6 +273,7 @@
 					{tray.trayQty}{' x '}
 					{tray.tray}
 					{#if tray.size !== 'One Size'}{' - '}{tray.size}{' | '}{/if}
+					{#if tray.boxExtra !== 'N/A'}{tray.boxExtra}{/if}
 				</div>
 				<button
 					class="font-bold text-red-500"
