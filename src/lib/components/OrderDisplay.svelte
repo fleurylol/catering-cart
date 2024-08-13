@@ -5,7 +5,7 @@
 
 <div class="mt-2">
 	<h2 class="text-lg font-bold">Totals:</h2>
-	<div class="m-auto flex w-[200px] justify-between p-2">
+	<div class="mb-2 flex w-fit justify-between gap-2">
 		<div class="dressing">Spoons: {order.spoonTotal}</div>
 		<div class="dressing">Tongs: {order.tongTotal}</div>
 	</div>

@@ -203,7 +203,10 @@
 			class={classnames({ item: true, 'bg-gray-200': selectedTab === 'box' })}
 			onclick={() => setActiveTab('box')}>Box Meal</button
 		>
-		<!-- <button class={classnames({ item: true, 'bg-gray-200': selectedTab === 'salad' })} onclick={() => setActiveTab('salad')}>Salad Kits</button> -->
+		<button
+			class={classnames({ item: true, 'bg-gray-200': selectedTab === 'salad' })}
+			onclick={() => setActiveTab('salad')}>Salad Kits</button
+		>
 		<button
 			class={classnames({ item: true, 'bg-gray-200': selectedTab === 'dry' })}
 			onclick={() => setActiveTab('dry')}>Dry Goods</button
