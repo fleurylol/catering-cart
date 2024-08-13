@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { trays } from '$lib/trayList';
+	import OrderDisplay from '$lib/components/OrderDisplay.svelte';
 	import { allTrays } from '$lib/traySearch';
 	import type { TrayType, Notes } from '$lib/types';
 	import classnames from 'classnames';
@@ -189,11 +190,24 @@
 
 <div class="m-2 w-full">
 	<div class="flex gap-1">
-		<button class="item" onclick={() => setActiveTab('hot')}>Hot Tray </button>
-		<button class="item" onclick={() => setActiveTab('cold')}>Cold Tray</button>
-		<button class="item" onclick={() => setActiveTab('box')}>Box Meal</button>
-		<!-- <button class="item" onclick={() => setActiveTab('salad')}>Salad Kits</button> -->
-		<button class="item" onclick={() => setActiveTab('dry')}>Dry Goods</button>
+		<button
+			class={classnames({ item: true, 'bg-gray-200': selectedTab === 'hot' })}
+			onclick={() => setActiveTab('hot')}
+			>Hot Tray
+		</button>
+		<button
+			class={classnames({ item: true, 'bg-gray-200': selectedTab === 'cold' })}
+			onclick={() => setActiveTab('cold')}>Cold Tray</button
+		>
+		<button
+			class={classnames({ item: true, 'bg-gray-200': selectedTab === 'box' })}
+			onclick={() => setActiveTab('box')}>Box Meal</button
+		>
+		<!-- <button class={classnames({ item: true, 'bg-gray-200': selectedTab === 'salad' })} onclick={() => setActiveTab('salad')}>Salad Kits</button> -->
+		<button
+			class={classnames({ item: true, 'bg-gray-200': selectedTab === 'dry' })}
+			onclick={() => setActiveTab('dry')}>Dry Goods</button
+		>
 	</div>
 	<div class="mt-2 grid grid-cols-2 gap-2">
 		{#each trayFilter as tray}
@@ -240,9 +254,10 @@
 		{#if (selectedSize && selectedTab !== 'box') || (selectedTab === 'box' && premium)}
 			<div>
 				<button
-					class="mt-2 rounded-lg bg-black p-2 text-white"
+					class="mr-4 mt-2 rounded-lg bg-black p-2 text-white"
 					onclick={() => addTrayToCart(selectedTray, selectedSize)}>Add to Cart</button
 				>
+				<span class="text-sm">Qty:</span>
 				<input
 					class="mt-2 size-10 border text-center"
 					value="1"
@@ -290,55 +305,7 @@
 		{/if}
 	</div>
 	<div class="mt-2">
-		<h2 class="text-lg font-bold">Totals:</h2>
-		<div class="m-auto flex w-[200px] justify-between p-2">
-			<div class="dressing">Spoons: {order.spoonTotal}</div>
-			<div class="dressing">Tongs: {order.tongTotal}</div>
-		</div>
-		<div class="grid grid-cols-2 gap-2">
-			<div class="dressing">Free 8oz: {order.free8oz}</div>
-			<div class="dressing">Honey: {order.honey}</div>
-			<div class="dressing">Roasted Almonds: {order.roasted_almonds}</div>
-			<div class="dressing">Honey Roasted BBQ: {order.honeyRoastedBBQ}</div>
-		</div>
-		{#if notes.length > 0}
-			<h1 class="pt-2 text-xl font-bold">Notes:</h1>
-			<div class="grid grid-cols-1 gap-4 p-2">
-				{#each notes as note}
-					<div class="dressing">
-						<span>{note.note}</span>
-					</div>
-				{/each}
-			</div>
-		{/if}
-		{#if order.dressings.avoRanch > 0}
-			<h1 class="pt-2 text-xl font-bold">Dressings:</h1>
-			<div class="grid grid-cols-3 gap-4 p-2">
-				<div class="dressing">
-					<span> Avocado Lime Ranch </span><span>{order.dressings.avoRanch}</span>
-				</div>
-				<div class="dressing">
-					<span>Garden Herb Ranch</span><span>{order.dressings.ranch}</span>
-				</div>
-				<div class="dressing">
-					<span>Zesty Apple Cider</span><span>{order.dressings.zestyAppleCider}</span>
-				</div>
-				<div class="dressing">
-					<span>Fat Free Honey Mustard</span><span>{order.dressings.fatFreeHoneyMustard}</span>
-				</div>
-				<div class="dressing">
-					<span>Light Balsamic Vinaigrette</span><span
-						>{order.dressings.lightBalsamicVinaigrette}</span
-					>
-				</div>
-				<div class="dressing">
-					<span>Light Italian</span><span>{order.dressings.lightItalian}</span>
-				</div>
-				<div class="dressing">
-					<span>Creamy Salsa</span><span>{order.dressings.creamySalsa}</span>
-				</div>
-			</div>
-		{/if}
+		<OrderDisplay {order} {notes} />
 	</div>
 </div>
 
