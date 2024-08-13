@@ -5,6 +5,7 @@ export type TrayType = {
 	trayQty: number;
 	tray: string;
 	size: string;
+	boxExtra: string;
 }[];
 
 export type Notes = {
