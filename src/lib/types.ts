@@ -8,6 +8,20 @@ export type TrayType = {
 	boxExtra: string;
 }[];
 
+export type BoxMeal = {
+	id: string;
+	entree: string;
+	treat: string;
+	side: string;
+};
+
+export type BoxMealType = BoxMeal[];
+
+export type BoxType = {
+	id: string;
+	trayQty: number;
+}[];
+
 export type Notes = {
 	note: string;
 }[];

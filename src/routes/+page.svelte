@@ -1,15 +1,18 @@
 <script lang="ts">
 	import { trays } from '$lib/trayList';
+	import BoxLabels from '$lib/components/box-markings/BoxLabels.svelte';
 	import OrderDisplay from '$lib/components/OrderDisplay.svelte';
 	import { allTrays } from '$lib/traySearch';
-	import type { TrayType, Notes } from '$lib/types';
+	import type { TrayType, Notes, BoxType, BoxMealType } from '$lib/types';
 	import classnames from 'classnames';
+	import { createBoxMeal } from '$lib/theFunction';
 	let trayFilter = $state(trays.filter((tray) => tray.type === ''));
 	let selectedTab = $state('');
 	let selectedTray = $state('');
 	let selectedSize = $state('');
 	let premium = $state('');
 	let trayQty = $state(1);
+	let boxMeals = $state<BoxMealType>([]);
 	let orderSubmitted = $state(false);
 	let trayCart = $state<TrayType>([]);
 	let notes = $state<Notes>([]);
@@ -30,6 +33,7 @@
 			creamySalsa: 0
 		}
 	});
+	let boxMealOrder = $state<BoxType>([]);
 	function setActiveTab(tab: string) {
 		selectedSize = '';
 		selectedTray = '';
@@ -90,6 +94,24 @@
 					notes.push({ note: tray.notes });
 				}
 			}
+
+			if (tray.boxExtra) {
+				const boxId = tray.tray + '|' + tray.size + '|' + tray.boxExtra;
+				const boxIndex = boxMealOrder.findIndex((box) => box.id === boxId);
+				if (boxIndex !== -1) {
+					boxMealOrder[boxIndex].trayQty += tray.trayQty;
+				} else {
+					boxMealOrder.push({
+						id: boxId,
+						trayQty: tray.trayQty
+					});
+					boxMealOrder.forEach((box) => {
+						const boxMeal = createBoxMeal(box.id);
+						boxMeals.push(boxMeal);
+					});
+				}
+			}
+
 			if (tray.utensil === 'Spoon') {
 				order.spoonTotal += tray.trayQty;
 			} else if (tray.utensil === 'Tong') {
@@ -99,8 +121,6 @@
 				} else {
 					order.tongTotal += tray.trayQty;
 				}
-			} else {
-				console.log('Utensil not found');
 			}
 
 			const trayIndex = allTrays.findIndex((t) => t.name === tray.tray);
@@ -150,14 +170,14 @@
 					order.dressings.lightItalian += allTrays[trayIndex].sizes.L?.dressings?.lightItalian!;
 					order.dressings.creamySalsa += allTrays[trayIndex].sizes.L?.dressings?.creamySalsa!;
 				}
-			} else {
-				console.log('Tray not found' + tray.tray);
 			}
 		});
 		orderSubmitted = true;
 	}
 
 	function orderClear() {
+		boxMeals = [];
+		boxMealOrder = [];
 		trayQty = 1;
 		order = {
 			spoonTotal: 0,
@@ -203,10 +223,7 @@
 			class={classnames({ item: true, 'bg-gray-200': selectedTab === 'box' })}
 			onclick={() => setActiveTab('box')}>Box Meal</button
 		>
-		<button
-			class={classnames({ item: true, 'bg-gray-200': selectedTab === 'salad' })}
-			onclick={() => setActiveTab('salad')}>Salad Kits</button
-		>
+		<!-- <button class={classnames({ item: true, 'bg-gray-200': selectedTab === 'salad' })} onclick={() => setActiveTab('salad')}>Salad Kits</button> -->
 		<button
 			class={classnames({ item: true, 'bg-gray-200': selectedTab === 'dry' })}
 			onclick={() => setActiveTab('dry')}>Dry Goods</button
@@ -307,8 +324,9 @@
 			>
 		{/if}
 	</div>
-	<div class="mt-2">
+	<div class="mt-2 space-y-3">
 		<OrderDisplay {order} {notes} />
+		<!-- <BoxPage {boxMealOrder} /> -->
 	</div>
 </div>
 
