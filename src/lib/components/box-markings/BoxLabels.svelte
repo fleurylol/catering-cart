@@ -2,8 +2,18 @@
 	import classnames from 'classnames';
 	import type { BoxType } from '$lib/types';
 	export let boxMealOrder: BoxType;
+	let totalBoxes = boxMealOrder.length;
+	let currentBox = 0;
+	const boxIndex = boxMealOrder.findIndex((box) => box.id);
+
+	function testFunc() {
+		console.log('current', currentBox);
+		console.log('total', totalBoxes);
+		console.log('index', boxIndex);
+	}
 </script>
 
+<button onclick={() => testFunc()}>Testt</button>
 {#each boxMealOrder as box}
 	<h1 class="text-xl font-bold">Box Meal {box.id}:</h1>
 	<h1 class="text-lg underline">Entree:</h1>
@@ -11,20 +21,20 @@
 		<div
 			class={classnames({
 				unselected: true,
-				'bg-black': box.content.treat === 'Chick-Fil-A Sandwich'
+				'bg-black': box.content.entree === 'Chick-Fil-A Sandwich'
 			})}
 		></div>
 		<span>Original Chick-Fil-A Chicken Sandwich</span>
 	</div>
 	<div class="flex items-center space-x-2">
 		<div
-			class={classnames({ unselected: true, 'bg-black': box.content.treat === 'Spicy Sandwich' })}
+			class={classnames({ unselected: true, 'bg-black': box.content.entree === 'Spicy Sandwich' })}
 		></div>
 		<span>Chick-Fil-A Spicy Chicken Sandwich</span>
 	</div>
 	<div class="flex items-center space-x-2">
 		<div
-			class={classnames({ unselected: true, 'bg-black': box.content.treat === 'Nuggets' })}
+			class={classnames({ unselected: true, 'bg-black': box.content.entree === 'Nuggets' })}
 		></div>
 		<span>Chilled Grilled Chicken Sub Sandwich</span>
 	</div>
@@ -32,7 +42,7 @@
 		<div
 			class={classnames({
 				unselected: true,
-				'bg-black': box.content.treat === 'Chilled Grilled Sub'
+				'bg-black': box.content.entree === 'Chilled Grilled Sub'
 			})}
 		></div>
 		<span>Chick-Fil-A Nuggets</span>
@@ -41,7 +51,7 @@
 		<div
 			class={classnames({
 				unselected: true,
-				'bg-black': box.content.treat === 'Grilled Cool Wrap'
+				'bg-black': box.content.entree === 'Grilled Cool Wrap'
 			})}
 		></div>
 		<span>Grilled Chicken Cool Wrap</span>
@@ -60,11 +70,11 @@
 		<span>Chick-Fil-A Waffle Potato Chips</span>
 	</div>
 	<div class="flex items-center space-x-2">
-		<div class={classnames({ unselected: true, 'bg-black': box.content.treat === 'Fruit' })}></div>
+		<div class={classnames({ unselected: true, 'bg-black': box.content.side === 'Fruit' })}></div>
 		<span>Fruit Cup</span>
 	</div>
 	<div class="flex items-center space-x-2">
-		<div class={classnames({ unselected: true, 'bg-black': box.content.treat === 'Kale' })}></div>
+		<div class={classnames({ unselected: true, 'bg-black': box.content.side === 'Kale' })}></div>
 		<span>Kale Crunch Side</span>
 	</div>
 	<div class="flex items-center space-x-2">
