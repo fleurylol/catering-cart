@@ -20,6 +20,7 @@ export type BoxMealType = BoxMeal[];
 export type BoxType = {
 	id: string;
 	trayQty: number;
+	content: BoxMeal;
 }[];
 
 export type Notes = {

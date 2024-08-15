@@ -101,13 +101,12 @@
 				if (boxIndex !== -1) {
 					boxMealOrder[boxIndex].trayQty += tray.trayQty;
 				} else {
+					const boxMealContent = createBoxMeal(boxId);
+
 					boxMealOrder.push({
 						id: boxId,
+						content: boxMealContent,
 						trayQty: tray.trayQty
-					});
-					boxMealOrder.forEach((box) => {
-						const boxMeal = createBoxMeal(box.id);
-						boxMeals.push(boxMeal);
 					});
 				}
 			}
@@ -326,6 +325,7 @@
 	</div>
 	<div class="mt-2 space-y-3">
 		<OrderDisplay {order} {notes} />
+		<BoxLabels {boxMealOrder} />
 		<!-- <BoxPage {boxMealOrder} /> -->
 	</div>
 </div>
