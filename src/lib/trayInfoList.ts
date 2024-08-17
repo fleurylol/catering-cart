@@ -130,21 +130,21 @@ export const trays = [
 	},
 	{
 		type: 'SK',
-		id: 'CS',
+		id: 'COB',
 		name: 'Cobb Salad',
 		sizes: ['One Size'],
 		premium: []
 	},
 	{
 		type: 'SK',
-		id: 'MS',
+		id: 'MARKET',
 		name: 'Market Salad',
 		sizes: ['One Size'],
 		premium: []
 	},
 	{
 		type: 'SK',
-		id: 'SSS',
+		id: 'SPICY',
 		name: 'Spicy Southwest Salad',
 		sizes: ['One Size'],
 		premium: []

@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { trays } from '$lib/trayInfoList';
+	import type { TrayCart, BoxMeal } from '$lib/types';
 	import classnames from 'classnames';
 	import { submitCart } from '$lib/theFunction';
 	const tabs = [
 		{ tab: 'HT', label: 'Hot Tray' },
 		{ tab: 'CT', label: 'Cold Tray' },
 		{ tab: 'BM', label: 'Box Meal' },
-		// { id: 'SK', label: 'Salad Kit' },
+		{ tab: 'SK', label: 'Salad Kit' },
 		{ tab: 'DG', label: 'Dry Good' }
 	];
 	const contentTabs = [
@@ -39,6 +40,12 @@
 			lightBalsamicVinaigrette: 0,
 			lightItalian: 0,
 			creamySalsa: 0
+		},
+		boxMeals: [] as BoxMeal[],
+		saladKits: {
+			cob: false,
+			spicy: false,
+			market: false
 		}
 	});
 	let orderContentTab = $state('tray');
@@ -49,7 +56,6 @@
 	let selectedPremium = $state('');
 	let trayQty = $state(1);
 	let orderSubmitted = $state(false);
-	type TrayCart = { TRAYID: string; qty: number; display: string };
 	let trayCart = $state<TrayCart[]>([]);
 
 	function selectTray(id: string, name: string) {
@@ -221,10 +227,23 @@
 			</div>
 		{/if}
 		{#if orderContentTab === 'boxMeal'}
-			<div>box meals</div>
+			<div class="flex flex-col gap-2">
+				{#each processedOrder.boxMeals as boxMeal}
+					<div class="flex flex-col gap-2">
+						<div>{boxMeal.display}</div>
+						<div>Side: {boxMeal.side}</div>
+						<div>Premium: {boxMeal.premium}</div>
+						<div>Qty: {boxMeal.qty}</div>
+					</div>
+				{/each}
+			</div>
 		{/if}
 		{#if orderContentTab === 'saladKits'}
-			<div>salad meals</div>
+			<div class="flex flex-col gap-2">
+				<div>Cobb: {processedOrder.saladKits.cob ? 'Yes' : 'No'}</div>
+				<div>Spicy: {processedOrder.saladKits.spicy ? 'Yes' : 'No'}</div>
+				<div>Market: {processedOrder.saladKits.market ? 'Yes' : 'No'}</div>
+			</div>
 		{/if}
 	{/if}
 </div>

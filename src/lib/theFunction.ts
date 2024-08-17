@@ -1,4 +1,4 @@
-type TrayCart = { TRAYID: string; qty: number; display: string };
+import type { TrayCart, BoxMeal } from '$lib/types';
 
 export const submitCart = (trayCart: TrayCart[]) => {
 	const order = {
@@ -16,13 +16,19 @@ export const submitCart = (trayCart: TrayCart[]) => {
 			lightBalsamicVinaigrette: 0,
 			lightItalian: 0,
 			creamySalsa: 0
+		},
+		boxMeals: [] as BoxMeal[],
+		saladKits: {
+			cob: false,
+			spicy: false,
+			market: false
 		}
 	};
 	trayCart.forEach((tray) => {
 		const type = tray.TRAYID.split('|')[0];
 		const item = tray.TRAYID.split('|')[1];
 		const size = tray.TRAYID.split('|')[2];
-		// const premium = tray.TRAYID.split('|')[3];
+		const premium = tray.TRAYID.split('|')[3];
 
 		if (type === 'HT' || type === 'CT' || type === 'DG') {
 			switch (item) {
@@ -133,7 +139,39 @@ export const submitCart = (trayCart: TrayCart[]) => {
 			}
 		}
 		if (type === 'BM') {
-			console.log(tray.TRAYID);
+			const index = order.boxMeals.findIndex((item) => item.id === tray.TRAYID);
+			if (index === -1) {
+				order.boxMeals.push({
+					id: tray.TRAYID,
+					qty: tray.qty,
+					display: tray.display,
+					entree: item,
+					side: size,
+					premium: premium
+				});
+			} else {
+				order.boxMeals[index].qty += tray.qty;
+			}
+		}
+		if (type === 'SK') {
+			switch (item) {
+				case 'COB': {
+					order.saladKits.cob = true;
+					break;
+				}
+				case 'SPICY': {
+					order.saladKits.spicy = true;
+					break;
+				}
+				case 'MARKET': {
+					order.saladKits.market = true;
+					break;
+				}
+				default: {
+					console.log('default');
+					break;
+				}
+			}
 		}
 	});
 	return order;
