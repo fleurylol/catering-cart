@@ -9,6 +9,20 @@
 		// { id: 'SK', label: 'Salad Kit' },
 		{ tab: 'DG', label: 'Dry Good' }
 	];
+	const contentTabs = [
+		{
+			tab: 'tray',
+			label: 'Trays'
+		},
+		{
+			tab: 'boxMeal',
+			label: 'Box Meals'
+		},
+		{
+			tab: 'saladKits',
+			label: 'Salad Kits'
+		}
+	];
 	let tab = $state('');
 	let processedOrder = $state({
 		tongsTotal: 0,
@@ -27,6 +41,7 @@
 			creamySalsa: 0
 		}
 	});
+	let orderContentTab = $state('tray');
 	let trayFilter = $state(trays.filter((tray) => tray.type === ''));
 	let selectedTray = $state('');
 	let trayDisplay = $state('');
@@ -187,14 +202,30 @@
 		</div>
 	{/if}
 	{#if orderSubmitted}
-		<div class="flex flex-col gap-2">
-			<div>Total Tongs: {processedOrder.tongsTotal}</div>
-			<div>Total Spoons: {processedOrder.spoonTotal}</div>
-			<div>Free 8oz: {processedOrder.free8oz}</div>
-			<div>Honey: {processedOrder.honey}</div>
-			<div>Honey Roasted BBQ: {processedOrder.honeyRoastedBBQ}</div>
-			<div>Roasted Almonds: {processedOrder.roastedAlmonds}</div>
+		<div class="flex gap-2">
+			{#each contentTabs as { tab, label }}
+				<button
+					class={classnames({ 'size rounded-md': true, 'bg-gray-200': orderContentTab === tab })}
+					onclick={() => (orderContentTab = tab)}>{label}</button
+				>
+			{/each}
 		</div>
+		{#if orderContentTab === 'tray'}
+			<div class="flex flex-col gap-2">
+				<div>Total Tongs: {processedOrder.tongsTotal}</div>
+				<div>Total Spoons: {processedOrder.spoonTotal}</div>
+				<div>Free 8oz: {processedOrder.free8oz}</div>
+				<div>Honey: {processedOrder.honey}</div>
+				<div>Honey Roasted BBQ: {processedOrder.honeyRoastedBBQ}</div>
+				<div>Roasted Almonds: {processedOrder.roastedAlmonds}</div>
+			</div>
+		{/if}
+		{#if orderContentTab === 'boxMeal'}
+			<div>box meals</div>
+		{/if}
+		{#if orderContentTab === 'saladKits'}
+			<div>salad meals</div>
+		{/if}
 	{/if}
 </div>
 

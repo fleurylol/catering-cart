@@ -133,7 +133,7 @@ export const submitCart = (trayCart: TrayCart[]) => {
 			}
 		}
 		if (type === 'BM') {
-			// Do something
+			console.log(tray.TRAYID);
 		}
 	});
 	return order;
