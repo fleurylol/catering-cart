@@ -1,21 +1,18 @@
 <script lang="ts">
 	import classnames from 'classnames';
-	import type { BoxType } from '$lib/types';
-	export let boxMealOrder: BoxType;
-	let totalBoxes = boxMealOrder.length;
-	let currentBox = 0;
-	const boxIndex = boxMealOrder.findIndex((box) => box.id);
-
-	function testFunc() {
-		console.log('current', currentBox);
-		console.log('total', totalBoxes);
-		console.log('index', boxIndex);
-	}
+	import type { BoxMeal } from '$lib/types';
+	type Props = {
+		boxMealOrder: {
+			id: string;
+			trayQty: number;
+			content: BoxMeal;
+		}[];
+	};
+	let { boxMealOrder }: Props = $props();
 </script>
 
-<button onclick={() => testFunc()}>Testt</button>
 {#each boxMealOrder as box}
-	<h1 class="text-xl font-bold">Box Meal {box.id}:</h1>
+	<h1 class="text-xl">{box.id.split('|')[0]} Box Meal</h1>
 	<h1 class="text-lg underline">Entree:</h1>
 	<div class="flex items-center space-x-2">
 		<div

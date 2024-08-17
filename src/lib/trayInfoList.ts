@@ -1,148 +1,135 @@
 export const trays = [
 	{
-		type: 'hot',
-		trayQty: 0,
-		utensil: 'Tong',
+		type: 'HT',
+		id: 'NUG',
 		name: 'Nugget Tray',
 		sizes: ['S', 'M', 'L']
 	},
 	{
-		type: 'hot',
-		trayQty: 0,
-		utensil: 'Tong',
+		type: 'HT',
+		id: 'STR',
 		name: 'Strip Tray',
 		sizes: ['S', 'M', 'L']
 	},
 	{
-		type: 'hot',
-		trayQty: 0,
-		utensil: 'Spoon',
+		type: 'HT',
+		id: 'MAC',
 		name: 'Mac Tray',
 		sizes: ['S', 'L']
 	},
 	{
-		type: 'hot',
-		trayQty: 0,
-		utensil: 'Tong',
+		type: 'HT',
+		id: 'MINI',
 		name: 'Chick-n-Minis Tray',
 		sizes: ['S', 'L']
 	},
 	{
-		type: 'hot',
-		trayQty: 0,
-		utensil: 'Tong',
+		type: 'HT',
+		id: 'GRBUNDLE',
 		name: 'Grilled Bundle',
 		sizes: ['One Size']
 	},
 	//cold
 	{
-		type: 'cold',
-		trayQty: 0,
-		utensil: 'Tong',
+		type: 'CT',
+		id: 'SALAD',
 		name: 'Salad Tray',
 		sizes: ['S', 'L']
 	},
 	{
-		type: 'cold',
-		trayQty: 0,
-		utensil: 'Tong',
+		type: 'CT',
+		id: 'WRAP',
 		name: 'Grilled Wrap Tray',
 		sizes: ['S', 'M', 'L']
 	},
 	{
-		type: 'cold',
-		trayQty: 0,
-		utensil: 'Tong',
+		type: 'CT',
+		id: 'SUB',
 		name: 'Chilled Grilled Tray',
 		sizes: ['S', 'M', 'L']
 	},
 	{
-		type: 'cold',
-		trayQty: 0,
-		utensil: 'Spoon',
+		type: 'CT',
+		id: 'FRUIT',
 		name: 'Fruit Tray',
 		sizes: ['S', 'L']
 	},
 	{
-		type: 'cold',
-		trayQty: 0,
-		utensil: 'Tong',
+		type: 'CT',
+		id: 'KALE',
 		name: 'Kale Tray',
 		sizes: ['S', 'L']
 	},
-	//dry
+	//DG
 	{
-		type: 'dry',
-		trayQty: 0,
-		utensil: 'Tong',
+		type: 'DG',
+		id: 'COOKIE',
 		name: 'Cookie Tray',
 		sizes: ['S', 'L']
 	},
 	{
-		type: 'dry',
-		trayQty: 0,
-		utensil: 'Tong',
+		type: 'DG',
+		id: 'COOKIEBROWNIE',
 		name: 'Cookie & Brownie Tray',
 		sizes: ['S', 'L']
 	},
 	{
-		type: 'dry',
-		trayQty: 0,
-		utensil: 'Tong',
+		type: 'DG',
+		id: 'BROWNIE',
 		name: 'Brownie Tray',
 		sizes: ['S', 'L']
 	},
-	//box items
+	//BM items
 	{
-		type: 'box',
-		trayQty: 0,
+		type: 'BM',
+		id: 'SANDWICH',
 		name: 'Chick-Fil-A Sandwich',
 		sizes: ['Cookie', 'Brownie'],
 		premium: ['N/A', 'Fruit', 'Kale']
 	},
 	{
-		type: 'box',
-		trayQty: 0,
+		type: 'BM',
+		id: 'SPICY',
 		name: 'Spicy Sandwich',
 		sizes: ['Cookie', 'Brownie'],
 		premium: ['N/A', 'Fruit', 'Kale']
 	},
 	{
-		type: 'box',
-		trayQty: 0,
+		type: 'BM',
+		id: 'NUGBM',
 		name: 'Nuggets',
 		sizes: ['Cookie', 'Brownie'],
 		premium: ['N/A', 'Fruit', 'Kale']
 	},
 	{
-		type: 'box',
-		trayQty: 0,
+		type: 'BM',
+		id: 'SUBBM',
 		name: 'Chilled Grilled Sub',
 		sizes: ['Cookie', 'Brownie'],
 		premium: ['N/A', 'Fruit', 'Kale']
 	},
 	{
-		type: 'box',
-		trayQty: 0,
+		type: 'BM',
+		id: 'WRAPBM',
 		name: 'Grilled Cool Wrap',
 		sizes: ['Cookie', 'Brownie'],
 		premium: ['N/A', 'Fruit', 'Kale']
 	},
 	{
 		type: 'salad',
-		trayQty: 0,
+		id: 'CS',
 		name: 'Cobb Salad',
 		sizes: ['One Size']
 	},
 	{
 		type: 'salad',
-		trayQty: 0,
+		id: 'MS',
 		name: 'Market Salad',
 		sizes: ['One Size']
 	},
 	{
 		type: 'salad',
-		trayQty: 0,
+		id: 'SSS',
 		name: 'Spicy Southwest Salad',
 		sizes: ['One Size']
 	}
