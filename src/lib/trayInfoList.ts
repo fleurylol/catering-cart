@@ -3,81 +3,94 @@ export const trays = [
 		type: 'HT',
 		id: 'NUG',
 		name: 'Nugget Tray',
-		sizes: ['S', 'M', 'L']
+		sizes: ['S', 'M', 'L'],
+		premium: []
 	},
 	{
 		type: 'HT',
 		id: 'STR',
 		name: 'Strip Tray',
-		sizes: ['S', 'M', 'L']
+		sizes: ['S', 'M', 'L'],
+		premium: []
 	},
 	{
 		type: 'HT',
 		id: 'MAC',
 		name: 'Mac Tray',
-		sizes: ['S', 'L']
+		sizes: ['S', 'L'],
+		premium: []
 	},
 	{
 		type: 'HT',
 		id: 'MINI',
 		name: 'Chick-n-Minis Tray',
-		sizes: ['S', 'L']
+		sizes: ['S', 'L'],
+		premium: []
 	},
 	{
 		type: 'HT',
 		id: 'GRBUNDLE',
 		name: 'Grilled Bundle',
-		sizes: ['One Size']
+		sizes: ['One Size'],
+		premium: []
 	},
 	//cold
 	{
 		type: 'CT',
 		id: 'SALAD',
 		name: 'Salad Tray',
-		sizes: ['S', 'L']
+		sizes: ['S', 'L'],
+		premium: []
 	},
 	{
 		type: 'CT',
 		id: 'WRAP',
 		name: 'Grilled Wrap Tray',
-		sizes: ['S', 'M', 'L']
+		sizes: ['S', 'M', 'L'],
+		premium: []
 	},
 	{
 		type: 'CT',
 		id: 'SUB',
 		name: 'Chilled Grilled Tray',
-		sizes: ['S', 'M', 'L']
+		sizes: ['S', 'M', 'L'],
+		premium: []
 	},
 	{
 		type: 'CT',
 		id: 'FRUIT',
 		name: 'Fruit Tray',
-		sizes: ['S', 'L']
+		sizes: ['S', 'L'],
+		premium: []
 	},
 	{
 		type: 'CT',
 		id: 'KALE',
 		name: 'Kale Tray',
-		sizes: ['S', 'L']
+		sizes: ['S', 'L'],
+		premium: []
 	},
 	//DG
 	{
 		type: 'DG',
 		id: 'COOKIE',
 		name: 'Cookie Tray',
-		sizes: ['S', 'L']
+		sizes: ['S', 'L'],
+		premium: []
 	},
 	{
 		type: 'DG',
 		id: 'COOKIEBROWNIE',
 		name: 'Cookie & Brownie Tray',
-		sizes: ['S', 'L']
+		sizes: ['S', 'L'],
+		premium: []
 	},
 	{
 		type: 'DG',
 		id: 'BROWNIE',
 		name: 'Brownie Tray',
-		sizes: ['S', 'L']
+		sizes: ['S', 'L'],
+		premium: []
 	},
 	//BM items
 	{
@@ -116,21 +129,24 @@ export const trays = [
 		premium: ['N/A', 'Fruit', 'Kale']
 	},
 	{
-		type: 'salad',
+		type: 'SK',
 		id: 'CS',
 		name: 'Cobb Salad',
-		sizes: ['One Size']
+		sizes: ['One Size'],
+		premium: []
 	},
 	{
-		type: 'salad',
+		type: 'SK',
 		id: 'MS',
 		name: 'Market Salad',
-		sizes: ['One Size']
+		sizes: ['One Size'],
+		premium: []
 	},
 	{
-		type: 'salad',
+		type: 'SK',
 		id: 'SSS',
 		name: 'Spicy Southwest Salad',
-		sizes: ['One Size']
+		sizes: ['One Size'],
+		premium: []
 	}
 ];

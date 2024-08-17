@@ -12,12 +12,16 @@
 	let trayFilter = $state(trays.filter((tray) => tray.type === ''));
 	let selectedTray = $state('');
 	let selectedSize = $state('');
+	let selectedPremium = $state('');
 	let trayQty = $state(1);
 	type TrayCart = { TRAYID: string; qty: number };
 	let trayCart = $state<TrayCart[]>([]);
 
 	function addToCart() {
-		const TRAYID = (tab + '|' + selectedTray + '|' + selectedSize).replace(/\s/g, '');
+		const TRAYID = (tab + '|' + selectedTray + '|' + selectedSize + '|' + selectedPremium).replace(
+			/\s/g,
+			''
+		);
 		const trayItem = {
 			TRAYID: TRAYID,
 			qty: trayQty
@@ -28,6 +32,7 @@
 		} else {
 			trayCart.push(trayItem);
 		}
+		console.log(trayCart);
 	}
 
 	function selectTab(id: string) {
@@ -66,8 +71,22 @@
 						>
 					{/each}
 				</div>
+				{#if selectedSize}
+					<div class="flex gap-2">
+						{#each tray.premium as premium}
+							<button
+								class={classnames({
+									'size rounded-md': true,
+									'bg-gray-200': selectedPremium === premium
+								})}
+								onclick={() => (selectedPremium = premium)}>{premium}</button
+							>
+						{/each}
+					</div>
+				{/if}
+
 				<!-- add to cart -->
-				{#if selectedSize && tab !== 'BM'}
+				{#if (selectedSize && tab !== 'BM') || (tab === 'BM' && selectedSize && selectedPremium)}
 					<button class="rounded-md bg-black p-2 text-white" onclick={() => addToCart()}
 						>Add to cart</button
 					>
