@@ -1,21 +1,46 @@
 <script lang="ts">
 	import { trays } from '$lib/trayInfoList';
 	import classnames from 'classnames';
+	import { submitCart } from '$lib/theFunction';
 	const tabs = [
-		{ id: 'HT', label: 'Hot Tray' },
-		{ id: 'CT', label: 'Cold Tray' },
-		{ id: 'BM', label: 'Box Meal' },
+		{ tab: 'HT', label: 'Hot Tray' },
+		{ tab: 'CT', label: 'Cold Tray' },
+		{ tab: 'BM', label: 'Box Meal' },
 		// { id: 'SK', label: 'Salad Kit' },
-		{ id: 'DG', label: 'Dry Good' }
+		{ tab: 'DG', label: 'Dry Good' }
 	];
 	let tab = $state('');
+	let processedOrder = $state({
+		tongsTotal: 0,
+		spoonTotal: 0,
+		free8oz: 0,
+		honey: 0,
+		honeyRoastedBBQ: 0,
+		roastedAlmonds: 0,
+		dressings: {
+			avoRanch: 0,
+			ranch: 0,
+			zestyAppleCider: 0,
+			fatFreeHoneyMustard: 0,
+			lightBalsamicVinaigrette: 0,
+			lightItalian: 0,
+			creamySalsa: 0
+		}
+	});
 	let trayFilter = $state(trays.filter((tray) => tray.type === ''));
 	let selectedTray = $state('');
+	let trayDisplay = $state('');
 	let selectedSize = $state('');
 	let selectedPremium = $state('');
 	let trayQty = $state(1);
-	type TrayCart = { TRAYID: string; qty: number };
+	let orderSubmitted = $state(false);
+	type TrayCart = { TRAYID: string; qty: number; display: string };
 	let trayCart = $state<TrayCart[]>([]);
+
+	function selectTray(id: string, name: string) {
+		selectedTray = id;
+		trayDisplay = name;
+	}
 
 	function addToCart() {
 		const TRAYID = (tab + '|' + selectedTray + '|' + selectedSize + '|' + selectedPremium).replace(
@@ -24,7 +49,8 @@
 		);
 		const trayItem = {
 			TRAYID: TRAYID,
-			qty: trayQty
+			qty: trayQty,
+			display: trayDisplay + ' ' + selectedSize + ' ' + selectedPremium
 		};
 		const index = trayCart.findIndex((item) => item.TRAYID === TRAYID);
 		if (index !== -1) {
@@ -32,22 +58,42 @@
 		} else {
 			trayCart.push(trayItem);
 		}
-		console.log(trayCart);
+	}
+
+	function resetCart() {
+		trayCart = [];
+		orderSubmitted = false;
+		resetOrder();
+	}
+
+	function resetOrder() {
+		selectedTray = '';
+		selectedSize = '';
+		selectedPremium = '';
+		trayQty = 1;
+		trayFilter = trays.filter(() => '');
 	}
 
 	function selectTab(id: string) {
-		selectedTray = '';
-		selectedSize = '';
+		resetOrder();
 		tab = id;
 		trayFilter = trays.filter((tray) => tray.type === id);
+	}
+	function removeTray(TRAYID: string, qty: number) {
+		if (qty > 1) {
+			const index = trayCart.findIndex((item) => item.TRAYID === TRAYID);
+			trayCart[index].qty -= 1;
+		} else {
+			trayCart = trayCart.filter((item) => item.TRAYID !== TRAYID);
+		}
 	}
 </script>
 
 <div class="m-2 w-full space-y-2">
 	<div class="flex gap-1">
 		<!-- Label Select -->
-		{#each tabs as { id, label }}
-			<button value={id} class="item" onclick={() => selectTab(id)}>{label}</button>
+		{#each tabs as { tab, label }}
+			<button value={tab} class="item" onclick={() => selectTab(tab)}>{label}</button>
 		{/each}
 	</div>
 	<div class="grid grid-cols-2 gap-2">
@@ -55,7 +101,7 @@
 		{#each trayFilter as tray}
 			<button
 				class={classnames({ 'size rounded-md': true, 'bg-gray-200': selectedTray === tray.id })}
-				onclick={() => (selectedTray = tray.id)}>{tray.name}</button
+				onclick={() => selectTray(tray.id, tray.name)}>{tray.name}</button
 			>
 		{/each}
 	</div>
@@ -92,6 +138,7 @@
 					>
 					<input
 						class="mt-2 size-10 border text-center"
+						type="number"
 						value={1}
 						onchange={(e) => {
 							const target = e.target as HTMLInputElement;
@@ -103,6 +150,51 @@
 				{/if}
 			{/if}
 		{/each}
+	{/if}
+	<div class="flex flex-col gap-2">
+		{#if trayCart.length === 0}
+			<div>Cart is empty</div>
+		{/if}
+		{#each trayCart as { display, qty, TRAYID }}
+			<div class="flex items-center gap-2">
+				<span>{display}</span>
+				-
+				<span>{qty}</span>
+				|
+				<button
+					class="font-bold text-red-500"
+					onclick={() => {
+						removeTray(TRAYID, qty);
+					}}>X</button
+				>
+			</div>
+		{/each}
+	</div>
+	<!-- Submit Cart -->
+	{#if trayCart.length > 0}
+		<div class="flex space-x-2">
+			<button
+				class="rounded-md bg-black p-2 text-white"
+				onclick={() => {
+					(processedOrder = submitCart(trayCart)), (orderSubmitted = true);
+				}}>Submit Cart</button
+			>
+			{#if orderSubmitted}
+				<button class="rounded-md bg-red-500 p-2 text-white" onclick={() => resetCart()}
+					>Reset</button
+				>
+			{/if}
+		</div>
+	{/if}
+	{#if orderSubmitted}
+		<div class="flex flex-col gap-2">
+			<div>Total Tongs: {processedOrder.tongsTotal}</div>
+			<div>Total Spoons: {processedOrder.spoonTotal}</div>
+			<div>Free 8oz: {processedOrder.free8oz}</div>
+			<div>Honey: {processedOrder.honey}</div>
+			<div>Honey Roasted BBQ: {processedOrder.honeyRoastedBBQ}</div>
+			<div>Roasted Almonds: {processedOrder.roastedAlmonds}</div>
+		</div>
 	{/if}
 </div>
 
