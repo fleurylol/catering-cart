@@ -226,16 +226,30 @@
 			{/each}
 		</div>
 		{#if orderContentTab === 'tray'}
-			<div class="flex flex-col gap-2">
-				<div class="flex">
-					<span>Tongs: {processedOrder.tongsTotal}</span>
-					<span>Spoons: {processedOrder.spoonTotal}</span>
+			<div class="flex flex-col">
+				<h2>Utensils:</h2>
+				<div class="flex space-x-2">
+					<span class="border p-2">Tongs: {processedOrder.tongsTotal}</span>
+					<span class="border p-2">Spoons: {processedOrder.spoonTotal}</span>
 				</div>
-				<div>
-					<div>Free 8oz: {processedOrder.free8oz}</div>
-					<div>Honey: {processedOrder.honey}</div>
-					<div>Honey Roasted BBQ: {processedOrder.honeyRoastedBBQ}</div>
-					<div>Roasted Almonds: {processedOrder.roastedAlmonds}</div>
+				<h2>Dry Content:</h2>
+				<div class="">
+					<div class="flex items-center border">
+						<img src="public/Sauces.png" class="size-20" alt="Roasted Almonds" />
+						<span class="ml-2">Free 8oz: {processedOrder.free8oz}</span>
+					</div>
+					<div class="flex items-center border">
+						<img src="public/PureCloverHoney.png" class="size-20" alt="Roasted Almonds" />
+						<span>Honey: {processedOrder.honey}</span>
+					</div>
+					<div class="flex items-center border">
+						<img src="public/HoneyRoastedBBQSauce.png" class="size-20" alt="Roasted Almonds" />
+						<span>Honey Roasted BBQ: {processedOrder.honeyRoastedBBQ}</span>
+					</div>
+					<div class="flex items-center border">
+						<img src="public/RoastedAlmonds.png" class="size-20" alt="Roasted Almonds" />
+						<span>Roasted Almonds: {processedOrder.roastedAlmonds}</span>
+					</div>
 				</div>
 			</div>
 		{/if}
@@ -252,32 +266,6 @@
 			</div>
 		{/if}
 	{/if}
-	<div class="flex flex-col">
-		<h2>Utensils:</h2>
-		<div class="flex space-x-2">
-			<span class="border p-2">Tongs: {processedOrder.tongsTotal}</span>
-			<span class="border p-2">Spoons: {processedOrder.spoonTotal}</span>
-		</div>
-		<h2>Dry Content:</h2>
-		<div class="">
-			<div class="flex items-center border">
-				<img src="public/Sauces.png" class="size-20" alt="Roasted Almonds" />
-				<span class="ml-2">Free 8oz: {processedOrder.free8oz}</span>
-			</div>
-			<div class="flex items-center border">
-				<img src="public/PureCloverHoney.png" class="size-20" alt="Roasted Almonds" />
-				<span>Honey: {processedOrder.honey}</span>
-			</div>
-			<div class="flex items-center border">
-				<img src="public/HoneyRoastedBBQSauce.png" class="size-20" alt="Roasted Almonds" />
-				<span>Honey Roasted BBQ: {processedOrder.honeyRoastedBBQ}</span>
-			</div>
-			<div class="flex items-center border">
-				<img src="public/RoastedAlmonds.png" class="size-20" alt="Roasted Almonds" />
-				<span>Roasted Almonds: {processedOrder.roastedAlmonds}</span>
-			</div>
-		</div>
-	</div>
 </div>
 
 <style>
