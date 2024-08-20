@@ -3,6 +3,7 @@
 	import type { TrayCart, BoxMeal } from '$lib/types';
 	import classnames from 'classnames';
 	import { submitCart } from '$lib/theFunction';
+	import BoxMealDisplay from '$lib/components/box-markings/BoxMealDisplay.svelte';
 	const tabs = [
 		{ tab: 'HT', label: 'Hot Tray' },
 		{ tab: 'CT', label: 'Cold Tray' },
@@ -48,6 +49,7 @@
 			market: false
 		}
 	});
+	let boxMeals = $state<BoxMeal[]>([]);
 	let orderContentTab = $state('tray');
 	let trayFilter = $state(trays.filter((tray) => tray.type === ''));
 	let selectedTray = $state('');
@@ -107,6 +109,13 @@
 		} else {
 			trayCart = trayCart.filter((item) => item.TRAYID !== TRAYID);
 		}
+	}
+
+	function submitOrder() {
+		processedOrder = submitCart(trayCart);
+		boxMeals = processedOrder.boxMeals;
+		orderSubmitted = true;
+		console.log(boxMeals);
 	}
 </script>
 
@@ -197,7 +206,7 @@
 			<button
 				class="rounded-md bg-black p-2 text-white"
 				onclick={() => {
-					(processedOrder = submitCart(trayCart)), (orderSubmitted = true);
+					submitOrder();
 				}}>Submit Cart</button
 			>
 			{#if orderSubmitted}
@@ -218,24 +227,21 @@
 		</div>
 		{#if orderContentTab === 'tray'}
 			<div class="flex flex-col gap-2">
-				<div>Total Tongs: {processedOrder.tongsTotal}</div>
-				<div>Total Spoons: {processedOrder.spoonTotal}</div>
-				<div>Free 8oz: {processedOrder.free8oz}</div>
-				<div>Honey: {processedOrder.honey}</div>
-				<div>Honey Roasted BBQ: {processedOrder.honeyRoastedBBQ}</div>
-				<div>Roasted Almonds: {processedOrder.roastedAlmonds}</div>
+				<div class="flex">
+					<span>Tongs: {processedOrder.tongsTotal}</span>
+					<span>Spoons: {processedOrder.spoonTotal}</span>
+				</div>
+				<div>
+					<div>Free 8oz: {processedOrder.free8oz}</div>
+					<div>Honey: {processedOrder.honey}</div>
+					<div>Honey Roasted BBQ: {processedOrder.honeyRoastedBBQ}</div>
+					<div>Roasted Almonds: {processedOrder.roastedAlmonds}</div>
+				</div>
 			</div>
 		{/if}
 		{#if orderContentTab === 'boxMeal'}
 			<div class="flex flex-col gap-2">
-				{#each processedOrder.boxMeals as boxMeal}
-					<div class="flex flex-col gap-2">
-						<div>{boxMeal.display}</div>
-						<div>Side: {boxMeal.side}</div>
-						<div>Premium: {boxMeal.premium}</div>
-						<div>Qty: {boxMeal.qty}</div>
-					</div>
-				{/each}
+				<BoxMealDisplay {boxMeals} />
 			</div>
 		{/if}
 		{#if orderContentTab === 'saladKits'}
@@ -246,6 +252,32 @@
 			</div>
 		{/if}
 	{/if}
+	<div class="flex flex-col">
+		<h2>Utensils:</h2>
+		<div class="flex space-x-2">
+			<span class="border p-2">Tongs: {processedOrder.tongsTotal}</span>
+			<span class="border p-2">Spoons: {processedOrder.spoonTotal}</span>
+		</div>
+		<h2>Dry Content:</h2>
+		<div class="">
+			<div class="flex items-center border">
+				<img src="public/Sauces.png" class="size-20" alt="Roasted Almonds" />
+				<span class="ml-2">Free 8oz: {processedOrder.free8oz}</span>
+			</div>
+			<div class="flex items-center border">
+				<img src="public/PureCloverHoney.png" class="size-20" alt="Roasted Almonds" />
+				<span>Honey: {processedOrder.honey}</span>
+			</div>
+			<div class="flex items-center border">
+				<img src="public/HoneyRoastedBBQSauce.png" class="size-20" alt="Roasted Almonds" />
+				<span>Honey Roasted BBQ: {processedOrder.honeyRoastedBBQ}</span>
+			</div>
+			<div class="flex items-center border">
+				<img src="public/RoastedAlmonds.png" class="size-20" alt="Roasted Almonds" />
+				<span>Roasted Almonds: {processedOrder.roastedAlmonds}</span>
+			</div>
+		</div>
+	</div>
 </div>
 
 <style>

@@ -1,8 +1,14 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig, searchForWorkspaceRoot } from 'vite';
+import Icons from 'unplugin-icons/vite';
 
 export default defineConfig({
-	plugins: [sveltekit()],
+	plugins: [
+		sveltekit(),
+		Icons({
+			compiler: 'svelte'
+		})
+	],
 	server: {
 		fs: {
 			allow: [
@@ -10,7 +16,7 @@ export default defineConfig({
 				searchForWorkspaceRoot(process.cwd()),
 				// your custom rules
 				'/static/favicon.ico',
-        '/favicon.ico'
+				'/favicon.ico'
 			]
 		}
 	}
