@@ -27,6 +27,7 @@
 		}
 	];
 	let tab = $state('');
+	let paperGoods = $state(false);
 	let processedOrder = $state({
 		tongsTotal: 0,
 		spoonTotal: 0,
@@ -200,6 +201,14 @@
 			</div>
 		{/each}
 	</div>
+	<!-- <button onclick={() => (paperGoods = !paperGoods)} class="">
+		{#if paperGoods}
+			<span class="font-bold">YES</span>
+		{:else}
+			<span class="font-bold">NO</span>
+		{/if}
+		Paper Goods
+	</button> -->
 	<!-- Submit Cart -->
 	{#if trayCart.length > 0}
 		<div class="flex space-x-2">
