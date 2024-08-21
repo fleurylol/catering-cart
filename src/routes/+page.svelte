@@ -1,5 +1,5 @@
 <script lang="ts">
-	import honeyRoastedBBQ from '$lib/assets/honeyRoastedBBQSauce.png';
+	import HoneyRoastedBBQ from '$lib/assets/HoneyRoastedBBQSauce.png';
 	import { trays } from '$lib/trayInfoList';
 	import type { TrayCart, BoxMeal } from '$lib/types';
 	import classnames from 'classnames';
@@ -244,7 +244,7 @@
 						<span>Honey: {processedOrder.honey}</span>
 					</div>
 					<div class="flex items-center border">
-						<img src={honeyRoastedBBQ} class="size-20" alt="Roasted Almonds" />
+						<img src={HoneyRoastedBBQ} class="size-20" alt="Roasted Almonds" />
 						<span>Honey Roasted BBQ: {processedOrder.honeyRoastedBBQ}</span>
 					</div>
 					<div class="flex items-center border">
