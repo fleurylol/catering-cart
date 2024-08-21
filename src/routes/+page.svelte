@@ -168,8 +168,7 @@
 						>Add to cart</button
 					>
 					<input
-						class="mt-2 size-10 border text-center"
-						type="number"
+						class="mt-2 h-10 w-10 border text-center"
 						value={1}
 						onchange={(e) => {
 							const target = e.target as HTMLInputElement;
