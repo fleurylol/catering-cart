@@ -235,19 +235,19 @@
 				<h2>Dry Content:</h2>
 				<div class="">
 					<div class="flex items-center border">
-						<img src="public/Sauces.png" class="size-20" alt="Roasted Almonds" />
+						<img src="static/Sauces.png" class="size-20" alt="Roasted Almonds" />
 						<span class="ml-2">Free 8oz: {processedOrder.free8oz}</span>
 					</div>
 					<div class="flex items-center border">
-						<img src="public/PureCloverHoney.png" class="size-20" alt="Roasted Almonds" />
+						<img src="staic/PureCloverHoney.png" class="size-20" alt="Roasted Almonds" />
 						<span>Honey: {processedOrder.honey}</span>
 					</div>
 					<div class="flex items-center border">
-						<img src="public/HoneyRoastedBBQSauce.png" class="size-20" alt="Roasted Almonds" />
+						<img src="staic/HoneyRoastedBBQSauce.png" class="size-20" alt="Roasted Almonds" />
 						<span>Honey Roasted BBQ: {processedOrder.honeyRoastedBBQ}</span>
 					</div>
 					<div class="flex items-center border">
-						<img src="public/RoastedAlmonds.png" class="size-20" alt="Roasted Almonds" />
+						<img src="static/RoastedAlmonds.png" class="size-20" alt="Roasted Almonds" />
 						<span>Roasted Almonds: {processedOrder.roastedAlmonds}</span>
 					</div>
 				</div>
