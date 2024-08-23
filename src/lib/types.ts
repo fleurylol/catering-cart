@@ -7,3 +7,9 @@ export type BoxMeal = {
 	side: string;
 	premium: string;
 };
+export type PaperGoods = {
+	napkins: boolean;
+	plates: number;
+  mintWipeKits: number;
+	utensilsKits: number;
+};

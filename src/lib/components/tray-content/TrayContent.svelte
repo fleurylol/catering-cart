@@ -1,5 +1,7 @@
 <script>
 	export let processedOrder;
+	export let paperGoods;
+	export let hasPaperGoods;
 </script>
 
 <div class="flex flex-col">
@@ -7,6 +9,14 @@
 	<div class="flex space-x-2">
 		<span class="border p-2">Tongs: {processedOrder.tongsTotal}</span>
 		<span class="border p-2">Spoons: {processedOrder.spoonTotal}</span>
+		{#if hasPaperGoods}
+			<span class="border p-2">Plates: {paperGoods.plates}</span>
+			{#if paperGoods.utensilsKits >= 1}
+				<span class="border p-2">Utensil Kits: {paperGoods.utensilsKits}</span>
+			{:else}
+				<span class="border p-2">Napkins: Yes</span>
+			{/if}
+		{/if}
 	</div>
 	<h2>Dry Content:</h2>
 	<div class="">
