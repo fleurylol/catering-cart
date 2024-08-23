@@ -4,6 +4,6 @@
 </script>
 
 <NavBar />
-<div class="m-auto flex max-w-[500px] justify-center">
+<div class="m-auto mb-10 flex max-w-[500px] justify-center">
 	<slot></slot>
 </div>
