@@ -28,12 +28,6 @@
 	];
 	let tab = $state('');
 	let hasPaperGoods = $state(false);
-	let paperGoods = $state<PaperGoods>({
-		plates: 0,
-		napkins: false,
-		mintWipeKits: 0,
-		utensilsKits: 0
-	});
 	let processedOrder = $state({
 		guestCount: 0,
 		tongsTotal: 0,
@@ -99,12 +93,6 @@
 		hasPaperGoods = false;
 		orderSubmitted = false;
 		trayDisplay = '';
-		paperGoods = {
-			plates: 0,
-			napkins: false,
-			mintWipeKits: 0,
-			utensilsKits: 0
-		};
 		resetOrder();
 	}
 
@@ -133,7 +121,6 @@
 	function submitOrder() {
 		processedOrder = submitCart(trayCart, hasPaperGoods, processedOrder.guestCount);
 		boxMeals = processedOrder.boxMeals;
-		paperGoods = processedOrder.paperGoods;
 		orderSubmitted = true;
 		//debugging
 	}
@@ -203,6 +190,11 @@
 	<div class="flex flex-col gap-2">
 		{#if trayCart.length === 0}
 			<div>Add an item to get started.</div>
+			{#if orderSubmitted}
+				<button class="rounded-md bg-red-500 p-2 text-white" onclick={() => resetCart()}
+					>Reset</button
+				>
+			{/if}
 		{/if}
 		{#if trayCart.length !== 0}
 			<div class="rounded-md border border-black p-2">
@@ -272,7 +264,7 @@
 			{/each}
 		</div>
 		{#if orderContentTab === 'tray'}
-			<TrayContent {processedOrder} {paperGoods} {hasPaperGoods} />
+			<TrayContent {processedOrder} {hasPaperGoods} />
 		{/if}
 		{#if orderContentTab === 'boxMeal'}
 			<div class="flex flex-col gap-2">
