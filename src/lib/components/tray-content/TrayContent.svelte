@@ -22,7 +22,7 @@
 						<span class="border-b p-2">Utensil Kits: {processedOrder.paperGoods.utensilsKits}</span>
 					{/if}
 					{#if processedOrder.paperGoods.utensilsKits === undefined}
-						<span class="border p-2">Napkins: Yes</span>
+						<span class="border-b p-2">Napkins: Yes</span>
 					{/if}
 					<span class="p-2">Cups: {processedOrder.paperGoods.cups}</span>
 				</div>
