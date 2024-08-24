@@ -33,6 +33,22 @@ export const submitCart = (trayCart: TrayCart[], paperGoods: boolean, guestCount
 		const premium = tray.TRAYID.split('|')[3];
 
 		if (type === 'HT' || type === 'CT' || type === 'DG') {
+			if (paperGoods) {
+				if (trayCart.length > 0) {
+					const mintWipeNum =
+						Math.floor(order.guestCount / 25) + (order.guestCount % 25 > 0 ? 1 : 0);
+					const containsItem = trayCart.some((tray) => {
+						const item = tray.TRAYID.split('|')[1];
+						return item === 'MAC' || item === 'SALAD' || item === 'KALE' || item === 'FRUIT';
+					});
+					if (containsItem) {
+						order.paperGoods.utensilsKits = guestCount;
+					}
+					order.paperGoods.mintWipeKits = mintWipeNum;
+					order.paperGoods.plates = guestCount;
+					order.paperGoods.napkins = true;
+				}
+			}
 			switch (item) {
 				// HOT TRAYS
 				case 'NUG':
@@ -176,20 +192,5 @@ export const submitCart = (trayCart: TrayCart[], paperGoods: boolean, guestCount
 			}
 		}
 	});
-	if (paperGoods) {
-		if (trayCart.length > 0) {
-			const mintWipeNum = Math.floor(order.guestCount / 25) + (order.guestCount % 25 > 0 ? 1 : 0);
-			const containsItem = trayCart.some((tray) => {
-				const item = tray.TRAYID.split('|')[1];
-				return item === 'MAC' || item === 'SALAD' || item === 'KALE' || item === 'FRUIT';
-			});
-			if (containsItem) {
-				order.paperGoods.utensilsKits = guestCount;
-			}
-			order.paperGoods.mintWipeKits = mintWipeNum;
-			order.paperGoods.plates = guestCount;
-			order.paperGoods.napkins = true;
-		}
-	}
 	return order;
 };
