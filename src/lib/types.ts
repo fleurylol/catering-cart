@@ -12,6 +12,7 @@ export type PaperGoods = {
 	plates: number;
 	mintWipeKits: number;
 	utensilsKits: number;
+	cups: number;
 };
 
 export type ProcessedOrder = {
@@ -36,6 +37,7 @@ export type ProcessedOrder = {
 		plates: number;
 		mintWipeKits: number;
 		utensilsKits: number;
+		cups: number;
 	};
 	boxMeals: BoxMeal[];
 	saladKits: {

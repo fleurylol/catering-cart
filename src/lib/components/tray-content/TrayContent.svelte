@@ -4,51 +4,52 @@
 	export let hasPaperGoods;
 </script>
 
-{#if processedOrder.tongsTotal && processedOrder.spoonTotal >= 0}
+{#if processedOrder.tongsTotal || processedOrder.spoonTotal > 0}
 	<div class="flex flex-col">
-		<h2>Utensils & Paper Goods:</h2>
+		<h2 class="text-lg">Utensils & Paper Goods:</h2>
 		<div class="flex">
-			<div class="flex flex-col">
-				<span class="border p-2">Tongs: {processedOrder.tongsTotal}</span>
-				<span class="border p-2">Spoons: {processedOrder.spoonTotal}</span>
+			<div class="mr-2 flex flex-col rounded-md border border-black">
+				<span class="border-b p-2">Tongs: {processedOrder.tongsTotal}</span>
+				<span class="p-2">Spoons: {processedOrder.spoonTotal}</span>
 			</div>
 			{#if hasPaperGoods}
-				<div class="flex flex-col">
-					<span class="border p-2">Plates: {processedOrder.paperGoods.plates}</span>
-					<span class="border p-2">Mint & Wipe Kits: {processedOrder.paperGoods.mintWipeKits}</span>
+				<div class="mr-2 flex flex-col rounded-md border border-black">
+					<span class="border-b p-2">Plates: {processedOrder.paperGoods.plates}</span>
+					<span class="p-2">Mint & Wipe Kits: {processedOrder.paperGoods.mintWipeKits}</span>
 				</div>
-				<div class="flex flex-col">
+				<div class="mr-2 flex flex-col rounded-md border border-black">
 					{#if processedOrder.paperGoods.utensilsKits >= 1}
-						<span class="border p-2">Utensil Kits: {processedOrder.paperGoods.utensilsKits}</span>
+						<span class="border-b p-2">Utensil Kits: {processedOrder.paperGoods.utensilsKits}</span>
 					{/if}
 					{#if processedOrder.paperGoods.utensilsKits === undefined}
-						<span class="border p-2">Napkins: Yes</span>
+						<span class="border-b p-2">Napkins: Yes</span>
 					{/if}
+					<span class="p-2">Cups: {processedOrder.paperGoods.cups}</span>
 				</div>
 			{/if}
 		</div>
-		<h2>Dry Content:</h2>
-		<div class="">
+		<h2 class="text-lg">Dry Content:</h2>
+		<div class="rounded-md border border-black">
 			{#if processedOrder.free8oz >= 1}
-				<div class="flex items-center border">
+				<div class="flex items-center rounded-md border-t py-1">
 					<img src="Sauces.png" class="size-20" alt="Roasted Almonds" />
 					<span class="ml-2">Free 8oz: {processedOrder.free8oz}</span>
 				</div>
 			{/if}
 			{#if processedOrder.honey >= 1}
-				<div class="flex items-center border">
+				<div class="flex items-center rounded-md border-t py-1">
 					<img src="PureCloverHoney.png" class="size-20" alt="Roasted Almonds" />
 					<span>Honey: {processedOrder.honey}</span>
 				</div>
 			{/if}
 			{#if processedOrder.honeyRoastedBBQ >= 1}
-				<div class="flex items-center border">
+				<div class="flex items-center rounded-md border-t py-1">
 					<img src="HoneyRoastedBBQSauce.png" class="size-20" alt="Roasted Almonds" />
 					<span>Honey Roasted BBQ: {processedOrder.honeyRoastedBBQ}</span>
 				</div>
 			{/if}
 			{#if processedOrder.roastedAlmonds >= 1}
-				<div class="flex items-center border">
+				<div class="flex items-center rounded-md border-t py-1">
 					<img src="RoastedAlmonds.png" class="size-20" alt="Roasted Almonds" />
 					<span>Roasted Almonds: {processedOrder.roastedAlmonds}</span>
 				</div>

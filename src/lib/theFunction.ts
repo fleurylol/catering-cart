@@ -32,6 +32,12 @@ export const submitCart = (trayCart: TrayCart[], paperGoods: boolean, guestCount
 		const size = tray.TRAYID.split('|')[2];
 		const premium = tray.TRAYID.split('|')[3];
 
+		if (type === 'OT') {
+			if (trayCart.length > 0) {
+				order.paperGoods.cups = guestCount;
+			}
+		}
+
 		if (type === 'HT' || type === 'CT' || type === 'DG') {
 			if (paperGoods) {
 				if (trayCart.length > 0) {

@@ -10,7 +10,8 @@
 		{ tab: 'CT', label: 'Cold Tray' },
 		{ tab: 'BM', label: 'Box Meal' },
 		{ tab: 'SK', label: 'Salad Kit' },
-		{ tab: 'DG', label: 'Dry Good' }
+		{ tab: 'DG', label: 'Dry Good' },
+		{ tab: 'OT', label: 'Others' }
 	];
 	const contentTabs = [
 		{
