@@ -8,9 +8,11 @@
 	}
 </script>
 
-<button class="rounded-md bg-black text-white" onclick={() => nextBox()}>Next Box Meal</button>
-<h1 class="text-xl font-bold">{boxMeals[boxIndex].qty} - {boxMeals[boxIndex].display}</h1>
-<div class="grid grid-cols-1 gap-4">
-	<Entree meal={boxMeals[boxIndex]} />
-	<Side meal={boxMeals[boxIndex]} />
-</div>
+{#if boxMeals.length > 0}
+	<button class="rounded-md bg-black text-white" onclick={() => nextBox()}>Next Box Meal</button>
+	<h1 class="text-xl font-bold">{boxMeals[boxIndex].qty} - {boxMeals[boxIndex].display}</h1>
+	<div class="grid grid-cols-1 gap-4">
+		<Entree meal={boxMeals[boxIndex]} />
+		<Side meal={boxMeals[boxIndex]} />
+	</div>
+{/if}

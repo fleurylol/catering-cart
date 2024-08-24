@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { trays } from '$lib/trayInfoList';
-	import type { TrayCart, BoxMeal } from '$lib/types';
+	import type { TrayCart, BoxMeal, PaperGoods } from '$lib/types';
 	import classnames from 'classnames';
 	import { submitCart } from '$lib/theFunction';
 	import BoxMealDisplay from '$lib/components/box-markings/BoxMealDisplay.svelte';
@@ -27,8 +27,9 @@
 		}
 	];
 	let tab = $state('');
-	let paperGoods = $state(false);
+	let hasPaperGoods = $state(false);
 	let processedOrder = $state({
+		guestCount: 0,
 		tongsTotal: 0,
 		spoonTotal: 0,
 		free8oz: 0,
@@ -44,6 +45,7 @@
 			lightItalian: 0,
 			creamySalsa: 0
 		},
+		paperGoods: {} as PaperGoods,
 		boxMeals: [] as BoxMeal[],
 		saladKits: {
 			cob: false,
@@ -87,7 +89,10 @@
 
 	function resetCart() {
 		trayCart = [];
+		processedOrder.guestCount = 0;
+		hasPaperGoods = false;
 		orderSubmitted = false;
+		trayDisplay = '';
 		resetOrder();
 	}
 
@@ -114,10 +119,10 @@
 	}
 
 	function submitOrder() {
-		processedOrder = submitCart(trayCart);
+		processedOrder = submitCart(trayCart, hasPaperGoods, processedOrder.guestCount);
 		boxMeals = processedOrder.boxMeals;
 		orderSubmitted = true;
-		console.log(boxMeals);
+		//debugging
 	}
 </script>
 
@@ -184,31 +189,55 @@
 	{/if}
 	<div class="flex flex-col gap-2">
 		{#if trayCart.length === 0}
-			<div>Cart is empty</div>
-		{/if}
-		{#each trayCart as { display, qty, TRAYID }}
-			<div class="flex items-center gap-2">
-				<span>{display}</span>
-				-
-				<span>{qty}</span>
-				|
-				<button
-					class="font-bold text-red-500"
-					onclick={() => {
-						removeTray(TRAYID, qty);
-					}}>X</button
+			<div>Add an item to get started.</div>
+			{#if orderSubmitted}
+				<button class="rounded-md bg-red-500 p-2 text-white" onclick={() => resetCart()}
+					>Reset</button
 				>
-			</div>
-		{/each}
-	</div>
-	<!-- <button onclick={() => (paperGoods = !paperGoods)} class="">
-		{#if paperGoods}
-			<span class="font-bold">YES</span>
-		{:else}
-			<span class="font-bold">NO</span>
+			{/if}
 		{/if}
-		Paper Goods
-	</button> -->
+		{#if trayCart.length !== 0}
+			<div class="rounded-md border border-black p-2">
+				<div class="flex size-fit flex-col p-2 text-lg">
+					<label class="flex items-center"
+						><input
+							type="checkbox"
+							class="mr-2 size-5"
+							onchange={() => {
+								hasPaperGoods = !hasPaperGoods;
+							}}
+						/>Paper Goods?</label
+					>
+					<label class="flex items-center"
+						>Guest Count:<input
+							class="ml-2 w-10 rounded-md border border-black text-center"
+							value={'0'}
+							onchange={(e) => {
+								const target = e.target as HTMLInputElement;
+								if (target) {
+									processedOrder.guestCount = parseInt(target.value);
+								}
+							}}
+						/></label
+					>
+				</div>
+				{#each trayCart as { display, qty, TRAYID }}
+					<div class="flex items-center gap-2 rounded-md border-t py-2">
+						<span>{display}</span>
+						-
+						<span>{qty}</span>
+						|
+						<button
+							class="font-bold text-red-500"
+							onclick={() => {
+								removeTray(TRAYID, qty);
+							}}>X</button
+						>
+					</div>
+				{/each}
+			</div>
+		{/if}
+	</div>
 	<!-- Submit Cart -->
 	{#if trayCart.length > 0}
 		<div class="flex space-x-2">
@@ -235,7 +264,7 @@
 			{/each}
 		</div>
 		{#if orderContentTab === 'tray'}
-			<TrayContent {processedOrder} />
+			<TrayContent {processedOrder} {hasPaperGoods} />
 		{/if}
 		{#if orderContentTab === 'boxMeal'}
 			<div class="flex flex-col gap-2">

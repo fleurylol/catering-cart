@@ -1,7 +1,8 @@
-import type { TrayCart, BoxMeal } from '$lib/types';
+import type { TrayCart, BoxMeal, PaperGoods } from '$lib/types';
 
-export const submitCart = (trayCart: TrayCart[]) => {
+export const submitCart = (trayCart: TrayCart[], paperGoods: boolean, guestCount: number) => {
 	const order = {
+		guestCount: guestCount,
 		tongsTotal: 0,
 		spoonTotal: 0,
 		free8oz: 0,
@@ -17,6 +18,7 @@ export const submitCart = (trayCart: TrayCart[]) => {
 			lightItalian: 0,
 			creamySalsa: 0
 		},
+		paperGoods: {} as PaperGoods,
 		boxMeals: [] as BoxMeal[],
 		saladKits: {
 			cob: false,
@@ -174,5 +176,20 @@ export const submitCart = (trayCart: TrayCart[]) => {
 			}
 		}
 	});
+	if (paperGoods) {
+		if (trayCart.length > 0) {
+			const mintWipeNum = Math.floor(order.guestCount / 25) + (order.guestCount % 25 > 0 ? 1 : 0);
+			const containsItem = trayCart.some((tray) => {
+				const item = tray.TRAYID.split('|')[1];
+				return item === 'MAC' || item === 'SALAD' || item === 'KALE' || item === 'FRUIT';
+			});
+			if (containsItem) {
+				order.paperGoods.utensilsKits = guestCount;
+			}
+			order.paperGoods.mintWipeKits = mintWipeNum;
+			order.paperGoods.plates = guestCount;
+			order.paperGoods.napkins = true;
+		}
+	}
 	return order;
 };

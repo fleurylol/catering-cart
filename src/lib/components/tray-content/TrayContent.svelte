@@ -1,12 +1,30 @@
-<script>
-	export let processedOrder;
+<script lang="ts">
+	import type { ProcessedOrder } from '$lib/types';
+	export let processedOrder: ProcessedOrder;
+	export let hasPaperGoods;
 </script>
 
 <div class="flex flex-col">
-	<h2>Utensils:</h2>
-	<div class="flex space-x-2">
-		<span class="border p-2">Tongs: {processedOrder.tongsTotal}</span>
-		<span class="border p-2">Spoons: {processedOrder.spoonTotal}</span>
+	<h2>Utensils & Paper Goods:</h2>
+	<div class="flex">
+		<div class="flex flex-col">
+			<span class="border p-2">Tongs: {processedOrder.tongsTotal}</span>
+			<span class="border p-2">Spoons: {processedOrder.spoonTotal}</span>
+		</div>
+		{#if hasPaperGoods}
+			<div class="flex flex-col">
+				<span class="border p-2">Plates: {processedOrder.paperGoods.plates}</span>
+				<span class="border p-2">Mint & Wipe Kits: {processedOrder.paperGoods.mintWipeKits}</span>
+			</div>
+			<div class="flex flex-col">
+				{#if processedOrder.paperGoods.utensilsKits >= 1}
+					<span class="border p-2">Utensil Kits: {processedOrder.paperGoods.utensilsKits}</span>
+				{/if}
+				{#if processedOrder.paperGoods.utensilsKits === undefined}
+					<span class="border p-2">Napkins: Yes</span>
+				{/if}
+			</div>
+		{/if}
 	</div>
 	<h2>Dry Content:</h2>
 	<div class="">
