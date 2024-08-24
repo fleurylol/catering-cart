@@ -148,5 +148,12 @@ export const trays = [
 		name: 'Spicy Southwest Salad',
 		sizes: ['One Size'],
 		premium: []
+	},
+	{
+		type: 'OT',
+		id: 'GAL',
+		name: 'Gallon',
+		sizes: ['One Size'],
+		premium: []
 	}
 ];
