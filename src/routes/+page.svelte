@@ -78,7 +78,8 @@
 		const trayItem = {
 			TRAYID: TRAYID,
 			qty: trayQty,
-			display: trayDisplay + ' ' + selectedSize + ' ' + selectedPremium
+			cartDisplay: trayDisplay + ' ' + selectedSize + ' ' + selectedPremium,
+			display: trayDisplay
 		};
 		const index = trayCart.findIndex((item) => item.TRAYID === TRAYID);
 		if (index !== -1) {
@@ -222,9 +223,9 @@
 						/></label
 					>
 				</div>
-				{#each trayCart as { display, qty, TRAYID }}
+				{#each trayCart as { cartDisplay, qty, TRAYID }}
 					<div class="flex items-center gap-2 rounded-md border-t py-2">
-						<span>{display}</span>
+						<span>{cartDisplay}</span>
 						-
 						<span>{qty}</span>
 						|

@@ -26,11 +26,23 @@
 		<span>Grilled Chicken Cool Wrap</span>
 	</div>
 	<div class="flex items-center gap-1">
-		<div class="unselected"></div>
-		<span
-			class="h-4
+		<div
+			class={classnames({
+				unselected: true,
+				'bg-black':
+					meal.entree === 'SPICYWRAPBM' ||
+					meal.entree === 'VEGGIEWRAPBM' ||
+					meal.entree === 'SPICYSUBBM'
+			})}
+		></div>
+		{#if meal.entree === 'SPICYWRAPBM' || meal.entree === 'VEGGIEWRAPBM' || meal.entree === 'SPICYSUBBM'}
+			<span class="w-48 underline underline-offset-4">{meal.display}</span>
+		{:else}
+			<span
+				class="mt-2 h-4
    w-48 border-b border-black"
-		></span>
+			></span>
+		{/if}
 	</div>
 </div>
 

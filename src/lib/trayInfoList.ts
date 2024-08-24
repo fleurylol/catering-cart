@@ -123,8 +123,29 @@ export const trays = [
 	},
 	{
 		type: 'BM',
+		id: 'SPICYSUBBM',
+		name: 'Spicy Chilled Grilled Sub',
+		sizes: ['Cookie', 'Brownie'],
+		premium: ['N/A', 'Fruit', 'Kale']
+	},
+	{
+		type: 'BM',
 		id: 'WRAPBM',
 		name: 'Grilled Cool Wrap',
+		sizes: ['Cookie', 'Brownie'],
+		premium: ['N/A', 'Fruit', 'Kale']
+	},
+	{
+		type: 'BM',
+		id: 'SPICYWRAPBM',
+		name: 'Spicy Grilled Cool Wrap',
+		sizes: ['Cookie', 'Brownie'],
+		premium: ['N/A', 'Fruit', 'Kale']
+	},
+	{
+		type: 'BM',
+		id: 'VEGGIEWRAPBM',
+		name: 'SW Veggie Wrap',
 		sizes: ['Cookie', 'Brownie'],
 		premium: ['N/A', 'Fruit', 'Kale']
 	},
