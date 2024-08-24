@@ -1,4 +1,9 @@
-export type TrayCart = { TRAYID: string; qty: number; display: string };
+export type TrayCart = {
+	TRAYID: string;
+	qty: number;
+	cartDisplay: string;
+	display: string;
+};
 export type BoxMeal = {
 	id: string;
 	qty: number;

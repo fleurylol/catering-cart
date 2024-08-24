@@ -28,8 +28,8 @@
 	<div class="flex items-center gap-1">
 		<div class="unselected"></div>
 		<span
-			class="h-4
-   w-48 border-b border-black"
+			class="mt-2 h-4
+w-48 border-b border-black"
 		></span>
 	</div>
 </div>

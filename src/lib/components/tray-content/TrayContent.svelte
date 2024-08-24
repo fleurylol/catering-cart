@@ -4,7 +4,7 @@
 	export let hasPaperGoods;
 </script>
 
-{#if processedOrder.tongsTotal || processedOrder.spoonTotal > 0}
+{#if processedOrder.tongsTotal || processedOrder.spoonTotal > 0 || processedOrder.boxMeals.length > 0}
 	<div class="flex flex-col">
 		<h2 class="text-lg">Utensils & Paper Goods:</h2>
 		<div class="flex">
