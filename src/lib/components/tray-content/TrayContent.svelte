@@ -11,6 +11,7 @@
 		<span class="border p-2">Spoons: {processedOrder.spoonTotal}</span>
 		{#if hasPaperGoods}
 			<span class="border p-2">Plates: {processedOrder.paperGoods.plates}</span>
+			<span class="border p-2">Mint & Wipe Kits: {processedOrder.paperGoods.mintWipeKits}</span>
 			{#if processedOrder.paperGoods.utensilsKits >= 1}
 				<span class="border p-2">Utensil Kits: {processedOrder.paperGoods.utensilsKits}</span>
 			{/if}
